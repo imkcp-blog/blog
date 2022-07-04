@@ -1,6 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>使用IBM免费服务器搭建宝塔面板</title>
+    <url>/IBMbt/</url>
+    <content><![CDATA[<p>搭建准备：一台PC,一个可用的IBM LINUX ONE VPS。</p>
+<p>1.安装宝塔面板（7.7.0）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wget -O install.sh http://f.cccyun.cc/bt/install_6.0.sh &amp;&amp; bash install.sh</span><br></pre></td></tr></table></figure>
+
+<p>此时无需进入</p>
+<p>2.解除宝塔绑定限制</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wget --no-check-certificate https://10g.biz/downloads/LinuxPanel.zip &amp;&amp; unzip LinuxPanel.zip &amp;&amp; bash /root/panel/update.sh &amp;&amp; rm -f /www/server/panel/data/bind.pl</span><br></pre></td></tr></table></figure>
+
+<p>3.安装宝塔面板（7.6.0）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wget -O install.sh http://v7.hostcli.com/install/install-ubuntu_6.0.sh &amp;&amp; sudo bash install.sh</span><br></pre></td></tr></table></figure>
+
+<p>4.绿化（变为纯净版）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl http://v7.hostcli.com/install/update6.sh|bash</span><br></pre></td></tr></table></figure>
+
+<p>开放所有端口</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">iptables -P INPUT ACCEPT</span><br><span class="line">iptables -P FORWARD ACCEPT</span><br><span class="line">iptables -P OUTPUT ACCEPT</span><br><span class="line">iptables -F</span><br></pre></td></tr></table></figure>
+
+<p>Ubuntu镜像默认设置了Iptable规则，关闭它</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">apt-get purge netfilter-persistent</span><br><span class="line">reboot</span><br></pre></td></tr></table></figure>
+
+<p>或者强制删除</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rm -rf /etc/iptables &amp;&amp; reboot</span><br></pre></td></tr></table></figure>
+
+<p>6.进入面板</p>
+<p>你的服务器ip:8888</p>
+<p>如有问题</p>
+<p>请在TG频道<a href="https://t.me/smallhousechat">https://t.me/smallhousechat</a></p>
+<p>TG群组<a href="https://t.me/onlysmallhouse">https://t.me/onlysmallhouse</a></p>
+<p>进行反馈</p>
+]]></content>
+      <categories>
+        <category>VPS</category>
+      </categories>
+      <tags>
+        <tag>IBM</tag>
+        <tag>宝塔</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Nginx Proxy Manager搭建</title>
+    <url>/Nginx-Proxy-Manager/</url>
+    <content><![CDATA[<p>Nginx Proxy Manager是个个由外国人开发的nginx面板，少了宝塔的功能，对于像我这样只需要用到nginx反代的人，但又不会手动编辑文件十分友好</p>
+<h1 id="搭建"><a href="#搭建" class="headerlink" title="搭建"></a>搭建</h1><p>由于centos我还没有研究明白，喜欢折腾的可以自己研究，不喜欢的你可以dd你的系统</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">安装Debian</span><br><span class="line"># Debian 8 64位：</span><br><span class="line">bash &lt;(wget --no-check-certificate -qO- &#x27;https://raw.githubusercontent.com/MoeClub/Note/master/InstallNET.sh&#x27;) -d 8 -v 64 -a -firmware -p 设置的root密码</span><br><span class="line"># Debian 9 64位：</span><br><span class="line">bash &lt;(wget --no-check-certificate -qO- &#x27;https://raw.githubusercontent.com/MoeClub/Note/master/InstallNET.sh&#x27;) -d 9 -v 64 -a -firmware -p 设置的root密码</span><br><span class="line"># Debian 10 64位：</span><br><span class="line">bash &lt;(wget --no-check-certificate -qO- &#x27;https://raw.githubusercontent.com/MoeClub/Note/master/InstallNET.sh&#x27;) -d 10 -v 64 -a -firmware -p 设置的root密码</span><br><span class="line"># Debian 11 64位：</span><br><span class="line">bash &lt;(wget --no-check-certificate -qO- &#x27;https://raw.githubusercontent.com/MoeClub/Note/master/InstallNET.sh&#x27;) -d 11 -v 64 -a -firmware -p 设置的root密码</span><br><span class="line">安装Ubuntu</span><br><span class="line"># Ubuntu 12.04 64位：</span><br><span class="line">bash &lt;(wget --no-check-certificate -qO- &#x27;https://raw.githubusercontent.com/MoeClub/Note/master/InstallNET.shh&#x27;) -u 12.04 -v 64 -a -firmware -p 设置的root密码</span><br><span class="line"># Ubuntu 14.04 64位：</span><br><span class="line">bash &lt;(wget --no-check-certificate -qO- &#x27;https://raw.githubusercontent.com/MoeClub/Note/master/InstallNET.sh&#x27;) -u 14.04 -v 64 -a -firmware -p 设置的root密码</span><br><span class="line"># Ubuntu 16.04 64位：</span><br><span class="line">bash &lt;(wget --no-check-certificate -qO- &#x27;https://raw.githubusercontent.com/MoeClub/Note/master/InstallNET.sh&#x27;) -u 16.04 -v 64 -a -firmware -p 设置的root密码</span><br><span class="line"># Ubuntu 18.04 64位：</span><br><span class="line">bash &lt;(wget --no-check-certificate -qO- &#x27;https://raw.githubusercontent.com/MoeClub/Note/master/InstallNET.sh&#x27;) -u 18.04 -v 64 -a -firmware -p 设置的root密码</span><br><span class="line"># Ubuntu 20.04 64位：</span><br><span class="line">bash &lt;(wget --no-check-certificate -qO- &#x27;https://raw.githubusercontent.com/MoeClub/Note/master/InstallNET.sh&#x27;) -u 20.04 -v 64 -a -firmware -p 设置的root密码</span><br><span class="line">所需环境</span><br><span class="line">架构：KVM/XEN，不支持OpenVZ。</span><br><span class="line"></span><br><span class="line">系统：Debian/Ubuntu/CentOS</span><br></pre></td></tr></table></figure>
+<p>1.更新环境</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">apt update -y &amp;&amp; apt install -y curl &amp;&amp; apt install -y socat &amp;&amp; apt install wget &amp;&amp; apt-get install sudo</span><br></pre></td></tr></table></figure>
+<p>2.安装docker</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt install docker.io -y &amp;&amp; sudo apt install docker-compose</span><br></pre></td></tr></table></figure>
+<p>3.自启动docker</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo systemctl enable --now docker</span><br></pre></td></tr></table></figure>
+<p>4.创建并编辑文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /home/ &amp;&amp; mkdir npm &amp;&amp; cd npm &amp;&amp; nano docker-compose.yml</span><br></pre></td></tr></table></figure>
+<p>然后输入以下代码</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">version: &quot;3&quot;</span><br><span class="line"></span><br><span class="line">services:</span><br><span class="line"></span><br><span class="line">  app:</span><br><span class="line"></span><br><span class="line">    image: &#x27;jc21/nginx-proxy-manager:latest&#x27;</span><br><span class="line"></span><br><span class="line">    restart: unless-stopped</span><br><span class="line"></span><br><span class="line">    ports:</span><br><span class="line"></span><br><span class="line">      # These ports are in format &lt;host-port&gt;:&lt;container-port&gt;</span><br><span class="line"></span><br><span class="line">      - &#x27;80:80&#x27; # Public HTTP Port</span><br><span class="line"></span><br><span class="line">      - &#x27;443:443&#x27; # Public HTTPS Port</span><br><span class="line"></span><br><span class="line">      - &#x27;81:81&#x27; # 面板端口</span><br><span class="line"></span><br><span class="line">      # Add any other Stream port you want to expose</span><br><span class="line"></span><br><span class="line">      # - &#x27;21:21&#x27; # FTP</span><br><span class="line"></span><br><span class="line">    environment:</span><br><span class="line"></span><br><span class="line">      DB_MYSQL_HOST: &quot;db&quot;</span><br><span class="line"></span><br><span class="line">      DB_MYSQL_PORT: 3306</span><br><span class="line"></span><br><span class="line">      DB_MYSQL_USER: &quot;npm&quot;</span><br><span class="line"></span><br><span class="line">      DB_MYSQL_PASSWORD: &quot;npm&quot;</span><br><span class="line"></span><br><span class="line">      DB_MYSQL_NAME: &quot;npm&quot;</span><br><span class="line"></span><br><span class="line">      # Uncomment this if IPv6 is not enabled on your host</span><br><span class="line"></span><br><span class="line">      # DISABLE_IPV6: &#x27;true&#x27;</span><br><span class="line"></span><br><span class="line">    volumes:</span><br><span class="line"></span><br><span class="line">      - ./data:/data</span><br><span class="line"></span><br><span class="line">      - ./letsencrypt:/etc/letsencrypt</span><br><span class="line"></span><br><span class="line">    depends_on:</span><br><span class="line"></span><br><span class="line">      - db</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  db:</span><br><span class="line"></span><br><span class="line">    image: &#x27;jc21/mariadb-aria:latest&#x27;</span><br><span class="line"></span><br><span class="line">    restart: unless-stopped</span><br><span class="line"></span><br><span class="line">    environment:</span><br><span class="line"></span><br><span class="line">      MYSQL_ROOT_PASSWORD: &#x27;npm&#x27;</span><br><span class="line"></span><br><span class="line">      MYSQL_DATABASE: &#x27;npm&#x27;</span><br><span class="line"></span><br><span class="line">      MYSQL_USER: &#x27;npm&#x27;</span><br><span class="line"></span><br><span class="line">      MYSQL_PASSWORD: &#x27;npm&#x27;</span><br><span class="line"></span><br><span class="line">    volumes:</span><br><span class="line"></span><br><span class="line">      - ./data/mysql:/var/lib/mysql</span><br></pre></td></tr></table></figure>
+<p>切记 <code>ctrl+x</code> 然后输入 <code>y</code> 退出<br>5.启动</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
+<p>然后 ip:port 访问面板默认为81<br>初始mail &amp; passwrd<br>Email:    <a href="mailto:&#97;&#100;&#109;&#x69;&#110;&#x40;&#101;&#x78;&#97;&#109;&#112;&#x6c;&#101;&#x2e;&#x63;&#111;&#x6d;">&#97;&#100;&#109;&#x69;&#110;&#x40;&#101;&#x78;&#97;&#109;&#112;&#x6c;&#101;&#x2e;&#x63;&#111;&#x6d;</a><br>Password: changeme</p>
+<p>参考： github项目<a href="https://github.com/NginxProxyManager/nginx-proxy-manager">https://github.com/NginxProxyManager/nginx-proxy-manager</a><br><a href="https://www.kejilion.xyz/2022/05/nginx-proxy-manager-nginx.html">https://www.kejilion.xyz/2022/05/nginx-proxy-manager-nginx.html</a></p>
+]]></content>
+      <categories>
+        <category>建站</category>
+      </categories>
+      <tags>
+        <tag>nginx</tag>
+        <tag>面板</tag>
+        <tag>vps</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Pagermaid--TG人形自走机器人</title>
     <url>/Pagermaid/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>1.hax续期脚本已更新博客也同步更新</p>
@@ -79,77 +150,6 @@
       </tags>
   </entry>
   <entry>
-    <title>使用IBM免费服务器搭建宝塔面板</title>
-    <url>/IBMbt/</url>
-    <content><![CDATA[<p>搭建准备：一台PC,一个可用的IBM LINUX ONE VPS。</p>
-<p>1.安装宝塔面板（7.7.0）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wget -O install.sh http://f.cccyun.cc/bt/install_6.0.sh &amp;&amp; bash install.sh</span><br></pre></td></tr></table></figure>
-
-<p>此时无需进入</p>
-<p>2.解除宝塔绑定限制</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wget --no-check-certificate https://10g.biz/downloads/LinuxPanel.zip &amp;&amp; unzip LinuxPanel.zip &amp;&amp; bash /root/panel/update.sh &amp;&amp; rm -f /www/server/panel/data/bind.pl</span><br></pre></td></tr></table></figure>
-
-<p>3.安装宝塔面板（7.6.0）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wget -O install.sh http://v7.hostcli.com/install/install-ubuntu_6.0.sh &amp;&amp; sudo bash install.sh</span><br></pre></td></tr></table></figure>
-
-<p>4.绿化（变为纯净版）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl http://v7.hostcli.com/install/update6.sh|bash</span><br></pre></td></tr></table></figure>
-
-<p>开放所有端口</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">iptables -P INPUT ACCEPT</span><br><span class="line">iptables -P FORWARD ACCEPT</span><br><span class="line">iptables -P OUTPUT ACCEPT</span><br><span class="line">iptables -F</span><br></pre></td></tr></table></figure>
-
-<p>Ubuntu镜像默认设置了Iptable规则，关闭它</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">apt-get purge netfilter-persistent</span><br><span class="line">reboot</span><br></pre></td></tr></table></figure>
-
-<p>或者强制删除</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rm -rf /etc/iptables &amp;&amp; reboot</span><br></pre></td></tr></table></figure>
-
-<p>6.进入面板</p>
-<p>你的服务器ip:8888</p>
-<p>如有问题</p>
-<p>请在TG频道<a href="https://t.me/smallhousechat">https://t.me/smallhousechat</a></p>
-<p>TG群组<a href="https://t.me/onlysmallhouse">https://t.me/onlysmallhouse</a></p>
-<p>进行反馈</p>
-]]></content>
-      <categories>
-        <category>VPS</category>
-      </categories>
-      <tags>
-        <tag>IBM</tag>
-        <tag>宝塔</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Nginx Proxy Manager搭建</title>
-    <url>/Nginx-Proxy-Manager/</url>
-    <content><![CDATA[<p>Nginx Proxy Manager是个个由外国人开发的nginx面板，少了宝塔的功能，对于像我这样只需要用到nginx反代的人，但又不会手动编辑文件十分友好</p>
-<h1 id="搭建"><a href="#搭建" class="headerlink" title="搭建"></a>搭建</h1><p>由于centos我还没有研究明白，喜欢折腾的可以自己研究，不喜欢的你可以dd你的系统</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">安装Debian</span><br><span class="line"># Debian 8 64位：</span><br><span class="line">bash &lt;(wget --no-check-certificate -qO- &#x27;https://raw.githubusercontent.com/MoeClub/Note/master/InstallNET.sh&#x27;) -d 8 -v 64 -a -firmware -p 设置的root密码</span><br><span class="line"># Debian 9 64位：</span><br><span class="line">bash &lt;(wget --no-check-certificate -qO- &#x27;https://raw.githubusercontent.com/MoeClub/Note/master/InstallNET.sh&#x27;) -d 9 -v 64 -a -firmware -p 设置的root密码</span><br><span class="line"># Debian 10 64位：</span><br><span class="line">bash &lt;(wget --no-check-certificate -qO- &#x27;https://raw.githubusercontent.com/MoeClub/Note/master/InstallNET.sh&#x27;) -d 10 -v 64 -a -firmware -p 设置的root密码</span><br><span class="line"># Debian 11 64位：</span><br><span class="line">bash &lt;(wget --no-check-certificate -qO- &#x27;https://raw.githubusercontent.com/MoeClub/Note/master/InstallNET.sh&#x27;) -d 11 -v 64 -a -firmware -p 设置的root密码</span><br><span class="line">安装Ubuntu</span><br><span class="line"># Ubuntu 12.04 64位：</span><br><span class="line">bash &lt;(wget --no-check-certificate -qO- &#x27;https://raw.githubusercontent.com/MoeClub/Note/master/InstallNET.shh&#x27;) -u 12.04 -v 64 -a -firmware -p 设置的root密码</span><br><span class="line"># Ubuntu 14.04 64位：</span><br><span class="line">bash &lt;(wget --no-check-certificate -qO- &#x27;https://raw.githubusercontent.com/MoeClub/Note/master/InstallNET.sh&#x27;) -u 14.04 -v 64 -a -firmware -p 设置的root密码</span><br><span class="line"># Ubuntu 16.04 64位：</span><br><span class="line">bash &lt;(wget --no-check-certificate -qO- &#x27;https://raw.githubusercontent.com/MoeClub/Note/master/InstallNET.sh&#x27;) -u 16.04 -v 64 -a -firmware -p 设置的root密码</span><br><span class="line"># Ubuntu 18.04 64位：</span><br><span class="line">bash &lt;(wget --no-check-certificate -qO- &#x27;https://raw.githubusercontent.com/MoeClub/Note/master/InstallNET.sh&#x27;) -u 18.04 -v 64 -a -firmware -p 设置的root密码</span><br><span class="line"># Ubuntu 20.04 64位：</span><br><span class="line">bash &lt;(wget --no-check-certificate -qO- &#x27;https://raw.githubusercontent.com/MoeClub/Note/master/InstallNET.sh&#x27;) -u 20.04 -v 64 -a -firmware -p 设置的root密码</span><br><span class="line">所需环境</span><br><span class="line">架构：KVM/XEN，不支持OpenVZ。</span><br><span class="line"></span><br><span class="line">系统：Debian/Ubuntu/CentOS</span><br></pre></td></tr></table></figure>
-<p>1.更新环境</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">apt update -y &amp;&amp; apt install -y curl &amp;&amp; apt install -y socat &amp;&amp; apt install wget &amp;&amp; apt-get install sudo</span><br></pre></td></tr></table></figure>
-<p>2.安装docker</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt install docker.io -y &amp;&amp; sudo apt install docker-compose</span><br></pre></td></tr></table></figure>
-<p>3.自启动docker</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo systemctl enable --now docker</span><br></pre></td></tr></table></figure>
-<p>4.创建并编辑文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /home/ &amp;&amp; mkdir npm &amp;&amp; cd npm &amp;&amp; nano docker-compose.yml</span><br></pre></td></tr></table></figure>
-<p>然后输入以下代码</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">version: &quot;3&quot;</span><br><span class="line"></span><br><span class="line">services:</span><br><span class="line"></span><br><span class="line">  app:</span><br><span class="line"></span><br><span class="line">    image: &#x27;jc21/nginx-proxy-manager:latest&#x27;</span><br><span class="line"></span><br><span class="line">    restart: unless-stopped</span><br><span class="line"></span><br><span class="line">    ports:</span><br><span class="line"></span><br><span class="line">      # These ports are in format &lt;host-port&gt;:&lt;container-port&gt;</span><br><span class="line"></span><br><span class="line">      - &#x27;80:80&#x27; # Public HTTP Port</span><br><span class="line"></span><br><span class="line">      - &#x27;443:443&#x27; # Public HTTPS Port</span><br><span class="line"></span><br><span class="line">      - &#x27;81:81&#x27; # 面板端口</span><br><span class="line"></span><br><span class="line">      # Add any other Stream port you want to expose</span><br><span class="line"></span><br><span class="line">      # - &#x27;21:21&#x27; # FTP</span><br><span class="line"></span><br><span class="line">    environment:</span><br><span class="line"></span><br><span class="line">      DB_MYSQL_HOST: &quot;db&quot;</span><br><span class="line"></span><br><span class="line">      DB_MYSQL_PORT: 3306</span><br><span class="line"></span><br><span class="line">      DB_MYSQL_USER: &quot;npm&quot;</span><br><span class="line"></span><br><span class="line">      DB_MYSQL_PASSWORD: &quot;npm&quot;</span><br><span class="line"></span><br><span class="line">      DB_MYSQL_NAME: &quot;npm&quot;</span><br><span class="line"></span><br><span class="line">      # Uncomment this if IPv6 is not enabled on your host</span><br><span class="line"></span><br><span class="line">      # DISABLE_IPV6: &#x27;true&#x27;</span><br><span class="line"></span><br><span class="line">    volumes:</span><br><span class="line"></span><br><span class="line">      - ./data:/data</span><br><span class="line"></span><br><span class="line">      - ./letsencrypt:/etc/letsencrypt</span><br><span class="line"></span><br><span class="line">    depends_on:</span><br><span class="line"></span><br><span class="line">      - db</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  db:</span><br><span class="line"></span><br><span class="line">    image: &#x27;jc21/mariadb-aria:latest&#x27;</span><br><span class="line"></span><br><span class="line">    restart: unless-stopped</span><br><span class="line"></span><br><span class="line">    environment:</span><br><span class="line"></span><br><span class="line">      MYSQL_ROOT_PASSWORD: &#x27;npm&#x27;</span><br><span class="line"></span><br><span class="line">      MYSQL_DATABASE: &#x27;npm&#x27;</span><br><span class="line"></span><br><span class="line">      MYSQL_USER: &#x27;npm&#x27;</span><br><span class="line"></span><br><span class="line">      MYSQL_PASSWORD: &#x27;npm&#x27;</span><br><span class="line"></span><br><span class="line">    volumes:</span><br><span class="line"></span><br><span class="line">      - ./data/mysql:/var/lib/mysql</span><br></pre></td></tr></table></figure>
-<p>切记 <code>ctrl+x</code> 然后输入 <code>y</code> 退出<br>5.启动</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
-<p>然后 ip:port 访问面板默认为81<br>初始mail &amp; passwrd<br>Email:    <a href="mailto:&#97;&#x64;&#x6d;&#105;&#110;&#64;&#101;&#120;&#97;&#x6d;&#x70;&#108;&#101;&#46;&#x63;&#111;&#109;">&#97;&#x64;&#x6d;&#105;&#110;&#64;&#101;&#120;&#97;&#x6d;&#x70;&#108;&#101;&#46;&#x63;&#111;&#109;</a><br>Password: changeme</p>
-<p>参考： github项目<a href="https://github.com/NginxProxyManager/nginx-proxy-manager">https://github.com/NginxProxyManager/nginx-proxy-manager</a><br><a href="https://www.kejilion.xyz/2022/05/nginx-proxy-manager-nginx.html">https://www.kejilion.xyz/2022/05/nginx-proxy-manager-nginx.html</a></p>
-]]></content>
-      <categories>
-        <category>建站</category>
-      </categories>
-      <tags>
-        <tag>nginx</tag>
-        <tag>面板</tag>
-        <tag>vps</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>白嫖Azure的远程桌面</title>
     <url>/azdesktop/</url>
     <content><![CDATA[<p>本教程使用 Azure Cloud Shell 在 Microsoft Learn 沙盒上创建虚拟机。<br>😎完全免费的四小时 RDP。</p>
@@ -218,6 +218,44 @@
       </tags>
   </entry>
   <entry>
+    <title>申请hax免费VPS</title>
+    <url>/hax/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Hax这个网站提供了免费的ipv6 vps，还提供了免费的网络虚拟空间服务，本篇文章就来分享白嫖hax IPV6 vps的方法，和连接方法</p>
+<h2 id="注册账号"><a href="#注册账号" class="headerlink" title="注册账号"></a>注册账号</h2><p>打开<a href="https://hax.co.id/">官网</a>点击右上角的“Register”</p>
+<p>在TG上打开<a href="https://t.me/HaxTG_bot">HaxTG_bot</a>输入/gitid获取自己的telegram id，复制到网页中，点击”Submit”按钮<img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128102231623.png" alt="image-20220128102231623"></p>
+<p>等会会在telegarm上收到bot发来的验证码，输入验证码，然后设置账号密码，登录账号</p>
+<p>登录之后，点击右上角的“VPS”-“Create VPS”<img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128102508528.png" alt="image-20220128102508528"></p>
+<p>参考图上，然后点击“CREATE VPS”</p>
+<p><img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128102925335.png" alt="image-20220128102925335"></p>
+<p>点击”VPS Info”，等几分钟后刷新网页，这样就代表成功了<img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128103153106.png" alt="image-20220128103153106"></p>
+<h2 id="连接VPS"><a href="#连接VPS" class="headerlink" title="连接VPS"></a>连接VPS</h2><h3 id="有ipv6"><a href="#有ipv6" class="headerlink" title="有ipv6"></a>有ipv6</h3><p>复制ipv6地址后打开ssh工具，我以Xshell举例，在主机那一栏填ipv6地址</p>
+<p><img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128103405285.png" alt="image-20220128103405285"></p>
+<p>然后点击“用户身份验证”，如图</p>
+<p><img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128103551007.png" alt="image-20220128103551007"></p>
+<p>这样就代表OK了</p>
+<p><img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128103645096.png" alt="image-20220128103645096"></p>
+<h3 id="没有ipv6"><a href="#没有ipv6" class="headerlink" title="没有ipv6"></a>没有ipv6</h3><h4 id="Web-Terminal"><a href="#Web-Terminal" class="headerlink" title="Web Terminal"></a>Web Terminal</h4><p>打开<a href="https://ssh.hax.co.id/">ssh.hax.co.id</a></p>
+<p>输入自己VPS的ipv6地址，用户名root和VPS密码，点击”Connect”<img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128104007453.png" alt="image-20220128104007453"></p>
+<p>这样就成功了</p>
+<h4 id="ipv4转发"><a href="#ipv4转发" class="headerlink" title="ipv4转发"></a>ipv4转发</h4><p>打开开Hax的<a href="https://hax.co.id/ipv6-to-ipv4/">IPV4 to IPV6</a>页面，如图</p>
+<p><img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128104311093.png" alt="image-20220128104311093"></p>
+<p>然后点击蓝色的按钮，如果出现了这样，就代表转发的端口被占用了，需要换一个<img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128104413923.png" alt="image-20220128104413923"></p>
+<p>通过不断的换，，如果这样，就代表成功了，这个仅7天内有效<img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128104741567.png" alt="image-20220128104741567"></p>
+<p>如图</p>
+<p><img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128105142575.png" alt="image-20220128105142575"></p>
+<p><img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128105202469.png" alt="image-20220128105202469"></p>
+<p>这样就成功了<img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128105336668.png" alt="image-20220128105336668"></p>
+]]></content>
+      <categories>
+        <category>VPS</category>
+      </categories>
+      <tags>
+        <tag>TG</tag>
+        <tag>hax</tag>
+        <tag>VPS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>自动续期freenom免费域名，并添加tg机器人通知</title>
     <url>/freenomxq/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>freenom是一家提供免费域名的厂商，应该都有账号吧，没有自己去申请，很简单，可域名到期后又不想重新注册域名，所以自动续期就来了</p>
@@ -277,44 +315,6 @@
         <tag>freenom</tag>
         <tag>域名</tag>
         <tag>telegram</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>申请hax免费VPS</title>
-    <url>/hax/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Hax这个网站提供了免费的ipv6 vps，还提供了免费的网络虚拟空间服务，本篇文章就来分享白嫖hax IPV6 vps的方法，和连接方法</p>
-<h2 id="注册账号"><a href="#注册账号" class="headerlink" title="注册账号"></a>注册账号</h2><p>打开<a href="https://hax.co.id/">官网</a>点击右上角的“Register”</p>
-<p>在TG上打开<a href="https://t.me/HaxTG_bot">HaxTG_bot</a>输入/gitid获取自己的telegram id，复制到网页中，点击”Submit”按钮<img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128102231623.png" alt="image-20220128102231623"></p>
-<p>等会会在telegarm上收到bot发来的验证码，输入验证码，然后设置账号密码，登录账号</p>
-<p>登录之后，点击右上角的“VPS”-“Create VPS”<img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128102508528.png" alt="image-20220128102508528"></p>
-<p>参考图上，然后点击“CREATE VPS”</p>
-<p><img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128102925335.png" alt="image-20220128102925335"></p>
-<p>点击”VPS Info”，等几分钟后刷新网页，这样就代表成功了<img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128103153106.png" alt="image-20220128103153106"></p>
-<h2 id="连接VPS"><a href="#连接VPS" class="headerlink" title="连接VPS"></a>连接VPS</h2><h3 id="有ipv6"><a href="#有ipv6" class="headerlink" title="有ipv6"></a>有ipv6</h3><p>复制ipv6地址后打开ssh工具，我以Xshell举例，在主机那一栏填ipv6地址</p>
-<p><img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128103405285.png" alt="image-20220128103405285"></p>
-<p>然后点击“用户身份验证”，如图</p>
-<p><img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128103551007.png" alt="image-20220128103551007"></p>
-<p>这样就代表OK了</p>
-<p><img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128103645096.png" alt="image-20220128103645096"></p>
-<h3 id="没有ipv6"><a href="#没有ipv6" class="headerlink" title="没有ipv6"></a>没有ipv6</h3><h4 id="Web-Terminal"><a href="#Web-Terminal" class="headerlink" title="Web Terminal"></a>Web Terminal</h4><p>打开<a href="https://ssh.hax.co.id/">ssh.hax.co.id</a></p>
-<p>输入自己VPS的ipv6地址，用户名root和VPS密码，点击”Connect”<img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128104007453.png" alt="image-20220128104007453"></p>
-<p>这样就成功了</p>
-<h4 id="ipv4转发"><a href="#ipv4转发" class="headerlink" title="ipv4转发"></a>ipv4转发</h4><p>打开开Hax的<a href="https://hax.co.id/ipv6-to-ipv4/">IPV4 to IPV6</a>页面，如图</p>
-<p><img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128104311093.png" alt="image-20220128104311093"></p>
-<p>然后点击蓝色的按钮，如果出现了这样，就代表转发的端口被占用了，需要换一个<img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128104413923.png" alt="image-20220128104413923"></p>
-<p>通过不断的换，，如果这样，就代表成功了，这个仅7天内有效<img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128104741567.png" alt="image-20220128104741567"></p>
-<p>如图</p>
-<p><img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128105142575.png" alt="image-20220128105142575"></p>
-<p><img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128105202469.png" alt="image-20220128105202469"></p>
-<p>这样就成功了<img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128105336668.png" alt="image-20220128105336668"></p>
-]]></content>
-      <categories>
-        <category>VPS</category>
-      </categories>
-      <tags>
-        <tag>TG</tag>
-        <tag>hax</tag>
-        <tag>VPS</tag>
       </tags>
   </entry>
   <entry>
@@ -478,8 +478,8 @@
         <tag>IBM</tag>
         <tag>节点</tag>
         <tag>科学上网</tag>
-        <tag>域名</tag>
         <tag>VPS</tag>
+        <tag>域名</tag>
       </tags>
   </entry>
   <entry>
@@ -559,8 +559,8 @@
       <tags>
         <tag>CloudFlare</tag>
         <tag>github</tag>
-        <tag>域名</tag>
         <tag>VPS</tag>
+        <tag>域名</tag>
       </tags>
   </entry>
   <entry>
