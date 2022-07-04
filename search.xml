@@ -18,7 +18,7 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">version: &quot;3&quot;</span><br><span class="line"></span><br><span class="line">services:</span><br><span class="line"></span><br><span class="line">  app:</span><br><span class="line"></span><br><span class="line">    image: &#x27;jc21/nginx-proxy-manager:latest&#x27;</span><br><span class="line"></span><br><span class="line">    restart: unless-stopped</span><br><span class="line"></span><br><span class="line">    ports:</span><br><span class="line"></span><br><span class="line">      # These ports are in format &lt;host-port&gt;:&lt;container-port&gt;</span><br><span class="line"></span><br><span class="line">      - &#x27;80:80&#x27; # Public HTTP Port</span><br><span class="line"></span><br><span class="line">      - &#x27;443:443&#x27; # Public HTTPS Port</span><br><span class="line"></span><br><span class="line">      - &#x27;81:81&#x27; # 面板端口</span><br><span class="line"></span><br><span class="line">      # Add any other Stream port you want to expose</span><br><span class="line"></span><br><span class="line">      # - &#x27;21:21&#x27; # FTP</span><br><span class="line"></span><br><span class="line">    environment:</span><br><span class="line"></span><br><span class="line">      DB_MYSQL_HOST: &quot;db&quot;</span><br><span class="line"></span><br><span class="line">      DB_MYSQL_PORT: 3306</span><br><span class="line"></span><br><span class="line">      DB_MYSQL_USER: &quot;npm&quot;</span><br><span class="line"></span><br><span class="line">      DB_MYSQL_PASSWORD: &quot;npm&quot;</span><br><span class="line"></span><br><span class="line">      DB_MYSQL_NAME: &quot;npm&quot;</span><br><span class="line"></span><br><span class="line">      # Uncomment this if IPv6 is not enabled on your host</span><br><span class="line"></span><br><span class="line">      # DISABLE_IPV6: &#x27;true&#x27;</span><br><span class="line"></span><br><span class="line">    volumes:</span><br><span class="line"></span><br><span class="line">      - ./data:/data</span><br><span class="line"></span><br><span class="line">      - ./letsencrypt:/etc/letsencrypt</span><br><span class="line"></span><br><span class="line">    depends_on:</span><br><span class="line"></span><br><span class="line">      - db</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  db:</span><br><span class="line"></span><br><span class="line">    image: &#x27;jc21/mariadb-aria:latest&#x27;</span><br><span class="line"></span><br><span class="line">    restart: unless-stopped</span><br><span class="line"></span><br><span class="line">    environment:</span><br><span class="line"></span><br><span class="line">      MYSQL_ROOT_PASSWORD: &#x27;npm&#x27;</span><br><span class="line"></span><br><span class="line">      MYSQL_DATABASE: &#x27;npm&#x27;</span><br><span class="line"></span><br><span class="line">      MYSQL_USER: &#x27;npm&#x27;</span><br><span class="line"></span><br><span class="line">      MYSQL_PASSWORD: &#x27;npm&#x27;</span><br><span class="line"></span><br><span class="line">    volumes:</span><br><span class="line"></span><br><span class="line">      - ./data/mysql:/var/lib/mysql</span><br></pre></td></tr></table></figure>
 <p>切记 <code>ctrl+x</code> 然后输入 <code>y</code> 退出<br>5.启动</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
-<p>初始mail &amp; passwrd<br>Email:    <a href="mailto:&#97;&#100;&#x6d;&#105;&#110;&#x40;&#101;&#120;&#x61;&#x6d;&#x70;&#x6c;&#101;&#x2e;&#99;&#x6f;&#x6d;">&#97;&#100;&#x6d;&#105;&#110;&#x40;&#101;&#120;&#x61;&#x6d;&#x70;&#x6c;&#101;&#x2e;&#99;&#x6f;&#x6d;</a><br>Password: changeme</p>
+<p>初始mail &amp; passwrd<br>Email:    <a href="mailto:&#x61;&#x64;&#109;&#x69;&#110;&#x40;&#x65;&#120;&#97;&#109;&#112;&#108;&#101;&#x2e;&#99;&#111;&#x6d;">&#x61;&#x64;&#109;&#x69;&#110;&#x40;&#x65;&#120;&#97;&#109;&#112;&#108;&#101;&#x2e;&#99;&#111;&#x6d;</a><br>Password: changeme</p>
 <p>参考： github项目<a href="https://github.com/NginxProxyManager/nginx-proxy-manager">https://github.com/NginxProxyManager/nginx-proxy-manager</a><br><a href="https://www.kejilion.xyz/2022/05/nginx-proxy-manager-nginx.html">https://www.kejilion.xyz/2022/05/nginx-proxy-manager-nginx.html</a></p>
 ]]></content>
       <categories>
@@ -28,6 +28,47 @@
         <tag>nginx</tag>
         <tag>面板</tag>
         <tag>vps</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用IBM免费服务器搭建宝塔面板</title>
+    <url>/IBMbt/</url>
+    <content><![CDATA[<p>搭建准备：一台PC,一个可用的IBM LINUX ONE VPS。</p>
+<p>1.安装宝塔面板（7.7.0）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wget -O install.sh http://f.cccyun.cc/bt/install_6.0.sh &amp;&amp; bash install.sh</span><br></pre></td></tr></table></figure>
+
+<p>此时无需进入</p>
+<p>2.解除宝塔绑定限制</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wget --no-check-certificate https://10g.biz/downloads/LinuxPanel.zip &amp;&amp; unzip LinuxPanel.zip &amp;&amp; bash /root/panel/update.sh &amp;&amp; rm -f /www/server/panel/data/bind.pl</span><br></pre></td></tr></table></figure>
+
+<p>3.安装宝塔面板（7.6.0）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wget -O install.sh http://v7.hostcli.com/install/install-ubuntu_6.0.sh &amp;&amp; sudo bash install.sh</span><br></pre></td></tr></table></figure>
+
+<p>4.绿化（变为纯净版）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl http://v7.hostcli.com/install/update6.sh|bash</span><br></pre></td></tr></table></figure>
+
+<p>开放所有端口</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">iptables -P INPUT ACCEPT</span><br><span class="line">iptables -P FORWARD ACCEPT</span><br><span class="line">iptables -P OUTPUT ACCEPT</span><br><span class="line">iptables -F</span><br></pre></td></tr></table></figure>
+
+<p>Ubuntu镜像默认设置了Iptable规则，关闭它</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">apt-get purge netfilter-persistent</span><br><span class="line">reboot</span><br></pre></td></tr></table></figure>
+
+<p>或者强制删除</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rm -rf /etc/iptables &amp;&amp; reboot</span><br></pre></td></tr></table></figure>
+
+<p>6.进入面板</p>
+<p>你的服务器ip:8888</p>
+<p>如有问题</p>
+<p>请在TG频道<a href="https://t.me/smallhousechat">https://t.me/smallhousechat</a></p>
+<p>TG群组<a href="https://t.me/onlysmallhouse">https://t.me/onlysmallhouse</a></p>
+<p>进行反馈</p>
+]]></content>
+      <categories>
+        <category>VPS</category>
+      </categories>
+      <tags>
+        <tag>IBM</tag>
+        <tag>宝塔</tag>
       </tags>
   </entry>
   <entry>
@@ -109,67 +150,6 @@
       </tags>
   </entry>
   <entry>
-    <title>白嫖Azure的远程桌面</title>
-    <url>/azdesktop/</url>
-    <content><![CDATA[<p>本教程使用 Azure Cloud Shell 在 Microsoft Learn 沙盒上创建虚拟机。<br>😎完全免费的四小时 RDP。</p>
-<h1 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h1><p>1.打开<a href="https://docs.microsoft.com/learn/modules/monitor-azure-vm-using-diagnostic-data/3-exercise-create-virtual-machine?activate-azure-sandbox=true">这个网址</a><br>点击登录以激活沙盒<br><img src="https://gcore.jsdelivr.net/gh/imkcp-blog/photos@main/blog120220604181807.png"><br>登录自己的账号，点击激活沙盒，通过人机验证<br><img src="https://gcore.jsdelivr.net/gh/imkcp-blog/photos@main/blog120220604182138.png"><br>点击检查权限，再点击接受<br><img src="https://gcore.jsdelivr.net/gh/imkcp-blog/photos@main/blog120220604182230.png"><br>等待一段时间后，成功后如图所示<br><img src="https://gcore.jsdelivr.net/gh/imkcp-blog/photos@main/blog120220604182434.png"><br>PS:<img src="https://gcore.jsdelivr.net/gh/imkcp-blog/photos@main/blog120220604182510.png">如果再以上步骤中出现了此种情况，则根据自身情况验证手机<br>2.在右边的代码框里输入以下代码</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl -skLO bit.do/azurewinvmplus ; chmod +x azurewinvmplus ; ./azurewinvmplus</span><br></pre></td></tr></table></figure>
-<p>或者</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl -skLO bit.do/azurewin11vm ; chmod +x azurewin11vm ; ./azurewin11vm</span><br></pre></td></tr></table></figure>
-<p>两者的区别就在于第二个一键部署win11，第一个则有更多选择。例如：系统和地区<br>3.我以第一个代码为演示，选择vps的地区<br><img src="https://gcore.jsdelivr.net/gh/imkcp-blog/photos@main/blog120220604183034.png"><br>4.选择vps的操作系统<br><img src="https://gcore.jsdelivr.net/gh/imkcp-blog/photos@main/blog120220604183055.png"><br>5.选择vps的配置，然后等待他部署完成<br><img src="https://gcore.jsdelivr.net/gh/imkcp-blog/photos@main/blog120220604183147.png"><br>6.等到出现这个界面就代表可以食用了<br><img src="https://gcore.jsdelivr.net/gh/imkcp-blog/photos@main/blog120220604183449.png"><br>7.然后使用win系统自带的远程软件连接就行,点击任务栏上的搜索，搜索远程就有</p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://github.com/kmille36/Windows-11-VPS">https://github.com/kmille36/Windows-11-VPS</a><br><a href="https://youtu.be/bwY8dt0YKgU">https://youtu.be/bwY8dt0YKgU</a></p>
-]]></content>
-      <categories>
-        <category>Free</category>
-      </categories>
-      <tags>
-        <tag>free</tag>
-        <tag>azure</tag>
-        <tag>RDP</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>使用IBM免费服务器搭建宝塔面板</title>
-    <url>/IBMbt/</url>
-    <content><![CDATA[<p>搭建准备：一台PC,一个可用的IBM LINUX ONE VPS。</p>
-<p>1.安装宝塔面板（7.7.0）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wget -O install.sh http://f.cccyun.cc/bt/install_6.0.sh &amp;&amp; bash install.sh</span><br></pre></td></tr></table></figure>
-
-<p>此时无需进入</p>
-<p>2.解除宝塔绑定限制</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wget --no-check-certificate https://10g.biz/downloads/LinuxPanel.zip &amp;&amp; unzip LinuxPanel.zip &amp;&amp; bash /root/panel/update.sh &amp;&amp; rm -f /www/server/panel/data/bind.pl</span><br></pre></td></tr></table></figure>
-
-<p>3.安装宝塔面板（7.6.0）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wget -O install.sh http://v7.hostcli.com/install/install-ubuntu_6.0.sh &amp;&amp; sudo bash install.sh</span><br></pre></td></tr></table></figure>
-
-<p>4.绿化（变为纯净版）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl http://v7.hostcli.com/install/update6.sh|bash</span><br></pre></td></tr></table></figure>
-
-<p>开放所有端口</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">iptables -P INPUT ACCEPT</span><br><span class="line">iptables -P FORWARD ACCEPT</span><br><span class="line">iptables -P OUTPUT ACCEPT</span><br><span class="line">iptables -F</span><br></pre></td></tr></table></figure>
-
-<p>Ubuntu镜像默认设置了Iptable规则，关闭它</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">apt-get purge netfilter-persistent</span><br><span class="line">reboot</span><br></pre></td></tr></table></figure>
-
-<p>或者强制删除</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rm -rf /etc/iptables &amp;&amp; reboot</span><br></pre></td></tr></table></figure>
-
-<p>6.进入面板</p>
-<p>你的服务器ip:8888</p>
-<p>如有问题</p>
-<p>请在TG频道<a href="https://t.me/smallhousechat">https://t.me/smallhousechat</a></p>
-<p>TG群组<a href="https://t.me/onlysmallhouse">https://t.me/onlysmallhouse</a></p>
-<p>进行反馈</p>
-]]></content>
-      <categories>
-        <category>VPS</category>
-      </categories>
-      <tags>
-        <tag>IBM</tag>
-        <tag>宝塔</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>使用CloudFlareSpeedTest优选出适合自己的CF IP</title>
     <url>/cf-ip/</url>
     <content><![CDATA[<h1 id="准备材料"><a href="#准备材料" class="headerlink" title="准备材料"></a>准备材料</h1><p>1.一台电脑或 vps</p>
@@ -215,6 +195,26 @@
         <tag>workers</tag>
         <tag>pagers</tag>
         <tag>github</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>白嫖Azure的远程桌面</title>
+    <url>/azdesktop/</url>
+    <content><![CDATA[<p>本教程使用 Azure Cloud Shell 在 Microsoft Learn 沙盒上创建虚拟机。<br>😎完全免费的四小时 RDP。</p>
+<h1 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h1><p>1.打开<a href="https://docs.microsoft.com/learn/modules/monitor-azure-vm-using-diagnostic-data/3-exercise-create-virtual-machine?activate-azure-sandbox=true">这个网址</a><br>点击登录以激活沙盒<br><img src="https://gcore.jsdelivr.net/gh/imkcp-blog/photos@main/blog120220604181807.png"><br>登录自己的账号，点击激活沙盒，通过人机验证<br><img src="https://gcore.jsdelivr.net/gh/imkcp-blog/photos@main/blog120220604182138.png"><br>点击检查权限，再点击接受<br><img src="https://gcore.jsdelivr.net/gh/imkcp-blog/photos@main/blog120220604182230.png"><br>等待一段时间后，成功后如图所示<br><img src="https://gcore.jsdelivr.net/gh/imkcp-blog/photos@main/blog120220604182434.png"><br>PS:<img src="https://gcore.jsdelivr.net/gh/imkcp-blog/photos@main/blog120220604182510.png">如果再以上步骤中出现了此种情况，则根据自身情况验证手机<br>2.在右边的代码框里输入以下代码</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl -skLO bit.do/azurewinvmplus ; chmod +x azurewinvmplus ; ./azurewinvmplus</span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl -skLO bit.do/azurewin11vm ; chmod +x azurewin11vm ; ./azurewin11vm</span><br></pre></td></tr></table></figure>
+<p>两者的区别就在于第二个一键部署win11，第一个则有更多选择。例如：系统和地区<br>3.我以第一个代码为演示，选择vps的地区<br><img src="https://gcore.jsdelivr.net/gh/imkcp-blog/photos@main/blog120220604183034.png"><br>4.选择vps的操作系统<br><img src="https://gcore.jsdelivr.net/gh/imkcp-blog/photos@main/blog120220604183055.png"><br>5.选择vps的配置，然后等待他部署完成<br><img src="https://gcore.jsdelivr.net/gh/imkcp-blog/photos@main/blog120220604183147.png"><br>6.等到出现这个界面就代表可以食用了<br><img src="https://gcore.jsdelivr.net/gh/imkcp-blog/photos@main/blog120220604183449.png"><br>7.然后使用win系统自带的远程软件连接就行,点击任务栏上的搜索，搜索远程就有</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://github.com/kmille36/Windows-11-VPS">https://github.com/kmille36/Windows-11-VPS</a><br><a href="https://youtu.be/bwY8dt0YKgU">https://youtu.be/bwY8dt0YKgU</a></p>
+]]></content>
+      <categories>
+        <category>Free</category>
+      </categories>
+      <tags>
+        <tag>free</tag>
+        <tag>azure</tag>
+        <tag>RDP</tag>
       </tags>
   </entry>
   <entry>
@@ -280,36 +280,6 @@
       </tags>
   </entry>
   <entry>
-    <title>使用hax，cf和x-ui搭建免费节点</title>
-    <url>/haxjd/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上期我们申请到了hax免费的VPS，那么现在就教大家来搭建节点，如果没有ipv6的话就可以放弃了，估计是用不了</p>
-<h2 id="准备材料"><a href="#准备材料" class="headerlink" title="准备材料"></a>准备材料</h2><p>·一个域名，hax vps，一台能上网的设备</p>
-<h2 id="搭建节点"><a href="#搭建节点" class="headerlink" title="搭建节点"></a>搭建节点</h2><h3 id="配置cf"><a href="#配置cf" class="headerlink" title="配置cf"></a>配置cf</h3><p><img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128151451860.png" alt="image-20220128151451860"></p>
-<p>ipv6地址填hax的，切记代理状态一定要打开，这是让cf来接管我们的流量，另外在进入SSL/TLS里的概述，将加密方式改为完全，如图所示<img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128151740935.png" alt="image-20220128151740935"></p>
-<p>然后申请证书，如图所示，然后点击创建就有了，切记要复制下来<img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128152028348.png" alt="image-20220128152028348"></p>
-<h3 id="VPS操作"><a href="#VPS操作" class="headerlink" title="VPS操作"></a>VPS操作</h3><h4 id="搭建x-ui"><a href="#搭建x-ui" class="headerlink" title="搭建x-ui"></a>搭建x-ui</h4><p>输入以下命令</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">bash &lt;(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128152236501.png"></p>
-<p>这样就代表成功了</p>
-<p>接着在浏览器地址栏输入 [ipv6地址]:54321进入x-ui的界面ipv6地址替换自己hax的地址，切记，别开代理，默认用户名和密码都是admin，现在就进入了面板<img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128152744588.png" alt="image-20220128152744588"></p>
-<h4 id="配置节点"><a href="#配置节点" class="headerlink" title="配置节点"></a>配置节点</h4><p>进入x-ui面板后点击入站列表，点击蓝色的加号，协议选择vmess，操作如下，然后点击添加<img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128153235656.png" alt="image-20220128153235656"></p>
-<p>然后点击查看复制链接，直接复制到v2ray客户端里<img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128153355311.png"></p>
-<h3 id="测速图"><a href="#测速图" class="headerlink" title="测速图"></a>测速图</h3><p><img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/second2022-01-28-15-40-05.png" alt="2022-01-28-15-40-05"></p>
-<p>电信300M</p>
-]]></content>
-      <categories>
-        <category>Free</category>
-      </categories>
-      <tags>
-        <tag>CloudFlare</tag>
-        <tag>CDN</tag>
-        <tag>节点</tag>
-        <tag>科学上网</tag>
-        <tag>域名</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>申请hax免费VPS</title>
     <url>/hax/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Hax这个网站提供了免费的ipv6 vps，还提供了免费的网络虚拟空间服务，本篇文章就来分享白嫖hax IPV6 vps的方法，和连接方法</p>
@@ -345,6 +315,36 @@
         <tag>TG</tag>
         <tag>hax</tag>
         <tag>VPS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用hax，cf和x-ui搭建免费节点</title>
+    <url>/haxjd/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上期我们申请到了hax免费的VPS，那么现在就教大家来搭建节点，如果没有ipv6的话就可以放弃了，估计是用不了</p>
+<h2 id="准备材料"><a href="#准备材料" class="headerlink" title="准备材料"></a>准备材料</h2><p>·一个域名，hax vps，一台能上网的设备</p>
+<h2 id="搭建节点"><a href="#搭建节点" class="headerlink" title="搭建节点"></a>搭建节点</h2><h3 id="配置cf"><a href="#配置cf" class="headerlink" title="配置cf"></a>配置cf</h3><p><img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128151451860.png" alt="image-20220128151451860"></p>
+<p>ipv6地址填hax的，切记代理状态一定要打开，这是让cf来接管我们的流量，另外在进入SSL/TLS里的概述，将加密方式改为完全，如图所示<img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128151740935.png" alt="image-20220128151740935"></p>
+<p>然后申请证书，如图所示，然后点击创建就有了，切记要复制下来<img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128152028348.png" alt="image-20220128152028348"></p>
+<h3 id="VPS操作"><a href="#VPS操作" class="headerlink" title="VPS操作"></a>VPS操作</h3><h4 id="搭建x-ui"><a href="#搭建x-ui" class="headerlink" title="搭建x-ui"></a>搭建x-ui</h4><p>输入以下命令</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">bash &lt;(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128152236501.png"></p>
+<p>这样就代表成功了</p>
+<p>接着在浏览器地址栏输入 [ipv6地址]:54321进入x-ui的界面ipv6地址替换自己hax的地址，切记，别开代理，默认用户名和密码都是admin，现在就进入了面板<img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128152744588.png" alt="image-20220128152744588"></p>
+<h4 id="配置节点"><a href="#配置节点" class="headerlink" title="配置节点"></a>配置节点</h4><p>进入x-ui面板后点击入站列表，点击蓝色的加号，协议选择vmess，操作如下，然后点击添加<img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128153235656.png" alt="image-20220128153235656"></p>
+<p>然后点击查看复制链接，直接复制到v2ray客户端里<img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128153355311.png"></p>
+<h3 id="测速图"><a href="#测速图" class="headerlink" title="测速图"></a>测速图</h3><p><img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/second2022-01-28-15-40-05.png" alt="2022-01-28-15-40-05"></p>
+<p>电信300M</p>
+]]></content>
+      <categories>
+        <category>Free</category>
+      </categories>
+      <tags>
+        <tag>CloudFlare</tag>
+        <tag>CDN</tag>
+        <tag>节点</tag>
+        <tag>科学上网</tag>
+        <tag>域名</tag>
       </tags>
   </entry>
   <entry>
@@ -520,6 +520,39 @@
       </tags>
   </entry>
   <entry>
+    <title>白嫖raksmart的10美金来买VPS</title>
+    <url>/raksmart/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上期我不是发了IBM Linuxone的搭建节点教程，我真不希望有人说什么IBM小气，不给注册，搭完节点就封号。其实我觉得吧，IBM给的机器有那么高的配置，为什么一定要死磕节点呢？宝塔不香吗？</p>
+<hr>
+<p>今天我就教大家薅raksmart的VPS（只要能买到VPS，怎么撸都不会封）</p>
+<h2 id="准备材料"><a href="#准备材料" class="headerlink" title="准备材料"></a>准备材料</h2><p>·一枚邮箱，一台能上网的智能手机或电脑，一个能注册账号的节点</p>
+<h2 id="注册账号"><a href="#注册账号" class="headerlink" title="注册账号"></a>注册账号</h2><p>先打开<a href="http://raksmart.com/">raksmart的官网</a>，点击右上角的“register”</p>
+<p><img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220127103817560.png" alt="image-20220127103817560"></p>
+<p>如果成功出来了注册的界面那就说明没问题，注册信息就推荐写美国的虚拟信息 <a href="http://haoweichi.com/">这是网站</a></p>
+<h3 id="特殊情况"><a href="#特殊情况" class="headerlink" title="特殊情况"></a>特殊情况</h3><p>没图，希望有人私聊我给我一张，就是点击注册页面后，他会提示IP重复注册，请联系客服之类的，那就说明你注册的IP之前注册过了，得换IP，知道他显示能够注册账号</p>
+<h3 id="发工单"><a href="#发工单" class="headerlink" title="发工单"></a>发工单</h3><p><img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220127104732010.png" alt="image-20220127104732010"></p>
+<p>注册进去后，点击图上所示的位置，然后两个都写：新用户申请十美元</p>
+<p><img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220127104801117.png" alt="image-20220127104801117"></p>
+<p>然后点击“submit”提交，最后点“continue”就发工单了，然后就是等他审核完成，审核完成后，会在你邮箱里发送一封邮件<img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220127105009495.png" alt="image-20220127105009495"></p>
+<p>长这个样子，如果失败了，也是IP的问题，所以懂了吧，注册这家厂商的账号并申请到十美元就是看IP</p>
+<h2 id="买VPS"><a href="#买VPS" class="headerlink" title="买VPS"></a>买VPS</h2><p><img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220127105227402.png" alt="image-20220127105227402"></p>
+<p>按照图上来，切记，除了美国以外的国家都不要买，速度拉胯，只有5M，地区可以随便选，网络就选大陆优化然后点击“continue”</p>
+<p><img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220127105438092.png" alt="image-20220127105438092"></p>
+<p>输入优惠码：VPS-TP-30%dis ，再点击傍边橙色的按钮，就能减少30%的费用，这样你就能薅两台VPS了，在点击checkout</p>
+<p>上面的小框框，然后就点击checkout，使用余额，等待他买完，这样你就拥有了一台VPS</p>
+<h2 id="查看VPS"><a href="#查看VPS" class="headerlink" title="查看VPS"></a>查看VPS</h2><p>你可以把页面弄成中文<img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220127105811918.png" alt="image-20220127105811918">门户首页/用户中心/我的产品与服务  依次点击，这样你就能看到你的VPS了，点击VPS，你就能看到你VPS的全部信息了</p>
+]]></content>
+      <categories>
+        <category>VPS</category>
+      </categories>
+      <tags>
+        <tag>节点</tag>
+        <tag>科学上网</tag>
+        <tag>VPS</tag>
+        <tag>raksmart</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>哪吒监控面板搭建</title>
     <url>/nezha/</url>
     <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p> <strong>哪吒监控</strong> 是一款一站式轻监控轻运维系统。支持系统状态、HTTP(SSL 证书变更、即将到期、到期)、TCP、Ping 监控报警，计划任务和在线终端。</p>
@@ -561,39 +594,6 @@
         <tag>github</tag>
         <tag>域名</tag>
         <tag>VPS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>白嫖raksmart的10美金来买VPS</title>
-    <url>/raksmart/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上期我不是发了IBM Linuxone的搭建节点教程，我真不希望有人说什么IBM小气，不给注册，搭完节点就封号。其实我觉得吧，IBM给的机器有那么高的配置，为什么一定要死磕节点呢？宝塔不香吗？</p>
-<hr>
-<p>今天我就教大家薅raksmart的VPS（只要能买到VPS，怎么撸都不会封）</p>
-<h2 id="准备材料"><a href="#准备材料" class="headerlink" title="准备材料"></a>准备材料</h2><p>·一枚邮箱，一台能上网的智能手机或电脑，一个能注册账号的节点</p>
-<h2 id="注册账号"><a href="#注册账号" class="headerlink" title="注册账号"></a>注册账号</h2><p>先打开<a href="http://raksmart.com/">raksmart的官网</a>，点击右上角的“register”</p>
-<p><img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220127103817560.png" alt="image-20220127103817560"></p>
-<p>如果成功出来了注册的界面那就说明没问题，注册信息就推荐写美国的虚拟信息 <a href="http://haoweichi.com/">这是网站</a></p>
-<h3 id="特殊情况"><a href="#特殊情况" class="headerlink" title="特殊情况"></a>特殊情况</h3><p>没图，希望有人私聊我给我一张，就是点击注册页面后，他会提示IP重复注册，请联系客服之类的，那就说明你注册的IP之前注册过了，得换IP，知道他显示能够注册账号</p>
-<h3 id="发工单"><a href="#发工单" class="headerlink" title="发工单"></a>发工单</h3><p><img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220127104732010.png" alt="image-20220127104732010"></p>
-<p>注册进去后，点击图上所示的位置，然后两个都写：新用户申请十美元</p>
-<p><img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220127104801117.png" alt="image-20220127104801117"></p>
-<p>然后点击“submit”提交，最后点“continue”就发工单了，然后就是等他审核完成，审核完成后，会在你邮箱里发送一封邮件<img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220127105009495.png" alt="image-20220127105009495"></p>
-<p>长这个样子，如果失败了，也是IP的问题，所以懂了吧，注册这家厂商的账号并申请到十美元就是看IP</p>
-<h2 id="买VPS"><a href="#买VPS" class="headerlink" title="买VPS"></a>买VPS</h2><p><img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220127105227402.png" alt="image-20220127105227402"></p>
-<p>按照图上来，切记，除了美国以外的国家都不要买，速度拉胯，只有5M，地区可以随便选，网络就选大陆优化然后点击“continue”</p>
-<p><img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220127105438092.png" alt="image-20220127105438092"></p>
-<p>输入优惠码：VPS-TP-30%dis ，再点击傍边橙色的按钮，就能减少30%的费用，这样你就能薅两台VPS了，在点击checkout</p>
-<p>上面的小框框，然后就点击checkout，使用余额，等待他买完，这样你就拥有了一台VPS</p>
-<h2 id="查看VPS"><a href="#查看VPS" class="headerlink" title="查看VPS"></a>查看VPS</h2><p>你可以把页面弄成中文<img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220127105811918.png" alt="image-20220127105811918">门户首页/用户中心/我的产品与服务  依次点击，这样你就能看到你的VPS了，点击VPS，你就能看到你VPS的全部信息了</p>
-]]></content>
-      <categories>
-        <category>VPS</category>
-      </categories>
-      <tags>
-        <tag>节点</tag>
-        <tag>科学上网</tag>
-        <tag>VPS</tag>
-        <tag>raksmart</tag>
       </tags>
   </entry>
   <entry>
