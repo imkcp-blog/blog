@@ -1,6 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Nginx Proxy Manager搭建</title>
+    <url>/Nginx-Proxy-Manager/</url>
+    <content><![CDATA[<p>Nginx Proxy Manager是个个由外国人开发的nginx面板，少了宝塔的功能，对于像我这样只需要用到nginx反代的人，但又不会手动编辑文件十分友好</p>
+<h1 id="搭建"><a href="#搭建" class="headerlink" title="搭建"></a>搭建</h1><p>1.更新环境<br>ubuntu和debian</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">apt update -y</span><br></pre></td></tr></table></figure>
+<p>2.安装docker<br>ubuntu和debian</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt install docker.io -y &amp;&amp; sudo apt install docker-compose</span><br></pre></td></tr></table></figure>
+<p>用以下命令来检测docker和docker-compose的版本,确保安装成功</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker --version</span><br><span class="line">docker-compose --version</span><br></pre></td></tr></table></figure>
+<p>3.开机自启docker</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl enable docker</span><br></pre></td></tr></table></figure>
+<p>4.创建并编辑文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /home/ &amp;&amp; mkdir npm &amp;&amp; cd npm &amp;&amp; nano docker-compose.yml</span><br></pre></td></tr></table></figure>
+<p>然后输入以下代码</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">version: &#x27;3&#x27;</span><br><span class="line">services:</span><br><span class="line">  app:</span><br><span class="line">    image: &#x27;jc21/nginx-proxy-manager:latest&#x27;</span><br><span class="line">    restart: unless-stopped</span><br><span class="line">    ports:</span><br><span class="line">      - &#x27;80:80&#x27;</span><br><span class="line">      - &#x27;81:81&#x27;</span><br><span class="line">      - &#x27;443:443&#x27;</span><br><span class="line">    volumes:</span><br><span class="line">      - ./data:/data</span><br><span class="line">      - ./letsencrypt:/etc/letsencrypt</span><br></pre></td></tr></table></figure>
+<p>切记 <code>ctrl+x</code> 然后输入 <code>y</code> 退出<br>5.安装</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
+<p>然后 ip:port 访问面板默认为81<br>初始mail &amp; passwrd<br>Email:    <a href="mailto:&#97;&#x64;&#x6d;&#x69;&#110;&#x40;&#x65;&#120;&#97;&#109;&#x70;&#x6c;&#101;&#x2e;&#x63;&#x6f;&#x6d;">&#97;&#x64;&#x6d;&#x69;&#110;&#x40;&#x65;&#120;&#97;&#109;&#x70;&#x6c;&#101;&#x2e;&#x63;&#x6f;&#x6d;</a><br>Password: changeme</p>
+<p>参考： github项目<a href="https://github.com/NginxProxyManager/nginx-proxy-manager">https://github.com/NginxProxyManager/nginx-proxy-manager</a></p>
+]]></content>
+      <categories>
+        <category>建站</category>
+      </categories>
+      <tags>
+        <tag>nginx</tag>
+        <tag>面板</tag>
+        <tag>vps</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用IBM免费服务器搭建宝塔面板</title>
     <url>/IBMbt/</url>
     <content><![CDATA[<p>搭建准备：一台PC,一个可用的IBM LINUX ONE VPS。</p>
@@ -39,6 +69,50 @@
       <tags>
         <tag>IBM</tag>
         <tag>宝塔</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>搭建开源的 Telegram 人形自走机器人 PagerMaid （支持新旧双版本共存）</title>
+    <url>/Pagermaid-Pyro/</url>
+    <content><![CDATA[<h1 id="Pagermaid-Pyro-简介"><a href="#Pagermaid-Pyro-简介" class="headerlink" title="Pagermaid-Pyro 简介"></a>Pagermaid-Pyro 简介</h1><p>PagerMaid-Pyro 是一个开源的 Telegram 人形自走 Bot 方案，基于 Python 开发，使用 Pyrogram 依赖，功能强大而丰富，它通过响应账号通过其他客户端发出的命令来自动执行一系列任务，可以帮助你打造专属的便利功能</p>
+<h1 id="搭建"><a href="#搭建" class="headerlink" title="搭建"></a>搭建</h1><h2 id="开放端口"><a href="#开放端口" class="headerlink" title="开放端口"></a>开放端口</h2><p>由于需要与 Telegram 服务器通信，首先开放服务器端口。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo iptables -P INPUT ACCEPT</span><br><span class="line">sudo iptables -P FORWARD ACCEPT</span><br><span class="line">sudo iptables -P OUTPUT ACCEPT</span><br><span class="line">sudo iptables -F</span><br></pre></td></tr></table></figure>
+<h2 id="拉取项目"><a href="#拉取项目" class="headerlink" title="拉取项目"></a>拉取项目</h2><p>在拉取项目之前，首先更新 git ，否则之后可能出现无法更新的情况。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt install --upgrade git -y</span><br></pre></td></tr></table></figure>
+<p>拉取项目至 <code>/var/lib/pagermaid_pyro</code> 目录。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /var/lib &amp;&amp; git clone https://github.com/TeamPGM/PagerMaid-Pyro.git pagermaid_pyro &amp;&amp; cd pagermaid_pyro</span><br></pre></td></tr></table></figure>
+<h2 id="安装软件包"><a href="#安装软件包" class="headerlink" title="安装软件包"></a>安装软件包</h2><p>首先更新 apt 包：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt update &amp;&amp; sudo apt upgrade -y</span><br></pre></td></tr></table></figure>
+<p>完整安装：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt install python3-pip imagemagick libwebp-dev neofetch libzbar-dev libxml2-dev libxslt-dev tesseract-ocr tesseract-ocr-all -y</span><br></pre></td></tr></table></figure>
+<p>安装软件包过程中，请等待一段时间，安装完成后，继续安装 Python 依赖包。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip3 install -r requirements.txt</span><br></pre></td></tr></table></figure>
+<p>如果出现 ERROR: Could not open requirements file: [Errno 2] No such file or directory: ‘requirements.txt’ 报错，请先检查当前目录是否为 /var/lib/pagermaid_pyro ，如果位于该目录仍然报错，请重新执行 拉取项目 步骤。<br>出现以下提示代表安装成功</p>
+<h2 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h2><p>执行以下命令，将配置文件<code>config.gen.yml</code>复制一份并且命名为<code>config.yml</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cp config.gen.yml config.yml</span><br></pre></td></tr></table></figure>
+<p>修改<code>config.yml</code> ,api_id和api_hash参考<a href="https://blog.imkcp.xyz/Pagermaid/">这篇文章</a></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vim config.yml</span><br></pre></td></tr></table></figure>
+<p>修改后退出</p>
+<h2 id="登录账号"><a href="#登录账号" class="headerlink" title="登录账号"></a>登录账号</h2><p>运行以下命令登录账号</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python3 -m pagermaid</span><br></pre></td></tr></table></figure>
+<p>此步需要填入完整的电话号码（eg：+18888888888，需要带上国际区号）然后 Telegram 会向你的其他客户端发送验证码，填入验证码后，回车，如有两步验证密码，则再输入两步验证密码即可。<br>出现已启动提示，代表登录成功，此时可以去 Telegram 任意聊天发送 ,help 进行测试。<br><img src="https://gcore.jsdelivr.net/gh/imkcp-blog/photos@main/cfworkers/20220705105140.png"></p>
+<h2 id="守护进程"><a href="#守护进程" class="headerlink" title="守护进程"></a>守护进程</h2><p>首先按下 Ctrl 键和 C 键停止运行<br>然后输入以下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cat &lt;&lt;&#x27;TEXT&#x27; &gt; /etc/systemd/system/pagermaid_pyro.service</span><br><span class="line">[Unit]</span><br><span class="line">Description=PagerMaid-Pyro telegram utility daemon</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=simple</span><br><span class="line">WorkingDirectory=/var/lib/pagermaid_pyro</span><br><span class="line">ExecStart=/usr/bin/python3 -m pagermaid</span><br><span class="line">Restart=always</span><br><span class="line">TEXT</span><br></pre></td></tr></table></figure>
+<p>设置完成后启动程序：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl start pagermaid_pyro</span><br></pre></td></tr></table></figure>
+<p>设置为开机自启：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl enable pagermaid_pyro</span><br></pre></td></tr></table></figure>
+<p>停止应用程序：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl stop pagermaid_pyro</span><br></pre></td></tr></table></figure>
+<h2 id="插件安装"><a href="#插件安装" class="headerlink" title="插件安装"></a>插件安装</h2><p>在任意聊天中发送 ,apt install &lt;插件名&gt; 即可安装。</p>
+]]></content>
+      <categories>
+        <category>杂</category>
+      </categories>
+      <tags>
+        <tag>vps</tag>
+        <tag>pagermaid</tag>
+        <tag>userbot</tag>
       </tags>
   </entry>
   <entry>
@@ -117,36 +191,6 @@
         <tag>TG</tag>
         <tag>hax</tag>
         <tag>Pagermaid</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Nginx Proxy Manager搭建</title>
-    <url>/Nginx-Proxy-Manager/</url>
-    <content><![CDATA[<p>Nginx Proxy Manager是个个由外国人开发的nginx面板，少了宝塔的功能，对于像我这样只需要用到nginx反代的人，但又不会手动编辑文件十分友好</p>
-<h1 id="搭建"><a href="#搭建" class="headerlink" title="搭建"></a>搭建</h1><p>1.更新环境<br>ubuntu和debian</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">apt update -y</span><br></pre></td></tr></table></figure>
-<p>2.安装docker<br>ubuntu和debian</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt install docker.io -y &amp;&amp; sudo apt install docker-compose</span><br></pre></td></tr></table></figure>
-<p>用以下命令来检测docker和docker-compose的版本,确保安装成功</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker --version</span><br><span class="line">docker-compose --version</span><br></pre></td></tr></table></figure>
-<p>3.开机自启docker</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl enable docker</span><br></pre></td></tr></table></figure>
-<p>4.创建并编辑文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /home/ &amp;&amp; mkdir npm &amp;&amp; cd npm &amp;&amp; nano docker-compose.yml</span><br></pre></td></tr></table></figure>
-<p>然后输入以下代码</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">version: &#x27;3&#x27;</span><br><span class="line">services:</span><br><span class="line">  app:</span><br><span class="line">    image: &#x27;jc21/nginx-proxy-manager:latest&#x27;</span><br><span class="line">    restart: unless-stopped</span><br><span class="line">    ports:</span><br><span class="line">      - &#x27;80:80&#x27;</span><br><span class="line">      - &#x27;81:81&#x27;</span><br><span class="line">      - &#x27;443:443&#x27;</span><br><span class="line">    volumes:</span><br><span class="line">      - ./data:/data</span><br><span class="line">      - ./letsencrypt:/etc/letsencrypt</span><br></pre></td></tr></table></figure>
-<p>切记 <code>ctrl+x</code> 然后输入 <code>y</code> 退出<br>5.安装</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
-<p>然后 ip:port 访问面板默认为81<br>初始mail &amp; passwrd<br>Email:    <a href="mailto:&#97;&#x64;&#109;&#105;&#110;&#x40;&#x65;&#x78;&#97;&#x6d;&#x70;&#108;&#x65;&#46;&#99;&#111;&#x6d;">&#97;&#x64;&#109;&#105;&#110;&#x40;&#x65;&#x78;&#97;&#x6d;&#x70;&#108;&#x65;&#46;&#99;&#111;&#x6d;</a><br>Password: changeme</p>
-<p>参考： github项目<a href="https://github.com/NginxProxyManager/nginx-proxy-manager">https://github.com/NginxProxyManager/nginx-proxy-manager</a></p>
-]]></content>
-      <categories>
-        <category>建站</category>
-      </categories>
-      <tags>
-        <tag>nginx</tag>
-        <tag>面板</tag>
-        <tag>vps</tag>
       </tags>
   </entry>
   <entry>
@@ -280,36 +324,6 @@
       </tags>
   </entry>
   <entry>
-    <title>使用hax，cf和x-ui搭建免费节点</title>
-    <url>/haxjd/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上期我们申请到了hax免费的VPS，那么现在就教大家来搭建节点，如果没有ipv6的话就可以放弃了，估计是用不了</p>
-<h2 id="准备材料"><a href="#准备材料" class="headerlink" title="准备材料"></a>准备材料</h2><p>·一个域名，hax vps，一台能上网的设备</p>
-<h2 id="搭建节点"><a href="#搭建节点" class="headerlink" title="搭建节点"></a>搭建节点</h2><h3 id="配置cf"><a href="#配置cf" class="headerlink" title="配置cf"></a>配置cf</h3><p><img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128151451860.png" alt="image-20220128151451860"></p>
-<p>ipv6地址填hax的，切记代理状态一定要打开，这是让cf来接管我们的流量，另外在进入SSL/TLS里的概述，将加密方式改为完全，如图所示<img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128151740935.png" alt="image-20220128151740935"></p>
-<p>然后申请证书，如图所示，然后点击创建就有了，切记要复制下来<img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128152028348.png" alt="image-20220128152028348"></p>
-<h3 id="VPS操作"><a href="#VPS操作" class="headerlink" title="VPS操作"></a>VPS操作</h3><h4 id="搭建x-ui"><a href="#搭建x-ui" class="headerlink" title="搭建x-ui"></a>搭建x-ui</h4><p>输入以下命令</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">bash &lt;(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128152236501.png"></p>
-<p>这样就代表成功了</p>
-<p>接着在浏览器地址栏输入 [ipv6地址]:54321进入x-ui的界面ipv6地址替换自己hax的地址，切记，别开代理，默认用户名和密码都是admin，现在就进入了面板<img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128152744588.png" alt="image-20220128152744588"></p>
-<h4 id="配置节点"><a href="#配置节点" class="headerlink" title="配置节点"></a>配置节点</h4><p>进入x-ui面板后点击入站列表，点击蓝色的加号，协议选择vmess，操作如下，然后点击添加<img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128153235656.png" alt="image-20220128153235656"></p>
-<p>然后点击查看复制链接，直接复制到v2ray客户端里<img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128153355311.png"></p>
-<h3 id="测速图"><a href="#测速图" class="headerlink" title="测速图"></a>测速图</h3><p><img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/second2022-01-28-15-40-05.png" alt="2022-01-28-15-40-05"></p>
-<p>电信300M</p>
-]]></content>
-      <categories>
-        <category>Free</category>
-      </categories>
-      <tags>
-        <tag>CloudFlare</tag>
-        <tag>CDN</tag>
-        <tag>节点</tag>
-        <tag>科学上网</tag>
-        <tag>域名</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>申请hax免费VPS</title>
     <url>/hax/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Hax这个网站提供了免费的ipv6 vps，还提供了免费的网络虚拟空间服务，本篇文章就来分享白嫖hax IPV6 vps的方法，和连接方法</p>
@@ -345,6 +359,36 @@
         <tag>TG</tag>
         <tag>hax</tag>
         <tag>VPS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用hax，cf和x-ui搭建免费节点</title>
+    <url>/haxjd/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上期我们申请到了hax免费的VPS，那么现在就教大家来搭建节点，如果没有ipv6的话就可以放弃了，估计是用不了</p>
+<h2 id="准备材料"><a href="#准备材料" class="headerlink" title="准备材料"></a>准备材料</h2><p>·一个域名，hax vps，一台能上网的设备</p>
+<h2 id="搭建节点"><a href="#搭建节点" class="headerlink" title="搭建节点"></a>搭建节点</h2><h3 id="配置cf"><a href="#配置cf" class="headerlink" title="配置cf"></a>配置cf</h3><p><img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128151451860.png" alt="image-20220128151451860"></p>
+<p>ipv6地址填hax的，切记代理状态一定要打开，这是让cf来接管我们的流量，另外在进入SSL/TLS里的概述，将加密方式改为完全，如图所示<img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128151740935.png" alt="image-20220128151740935"></p>
+<p>然后申请证书，如图所示，然后点击创建就有了，切记要复制下来<img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128152028348.png" alt="image-20220128152028348"></p>
+<h3 id="VPS操作"><a href="#VPS操作" class="headerlink" title="VPS操作"></a>VPS操作</h3><h4 id="搭建x-ui"><a href="#搭建x-ui" class="headerlink" title="搭建x-ui"></a>搭建x-ui</h4><p>输入以下命令</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">bash &lt;(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128152236501.png"></p>
+<p>这样就代表成功了</p>
+<p>接着在浏览器地址栏输入 [ipv6地址]:54321进入x-ui的界面ipv6地址替换自己hax的地址，切记，别开代理，默认用户名和密码都是admin，现在就进入了面板<img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128152744588.png" alt="image-20220128152744588"></p>
+<h4 id="配置节点"><a href="#配置节点" class="headerlink" title="配置节点"></a>配置节点</h4><p>进入x-ui面板后点击入站列表，点击蓝色的加号，协议选择vmess，操作如下，然后点击添加<img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128153235656.png" alt="image-20220128153235656"></p>
+<p>然后点击查看复制链接，直接复制到v2ray客户端里<img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128153355311.png"></p>
+<h3 id="测速图"><a href="#测速图" class="headerlink" title="测速图"></a>测速图</h3><p><img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/second2022-01-28-15-40-05.png" alt="2022-01-28-15-40-05"></p>
+<p>电信300M</p>
+]]></content>
+      <categories>
+        <category>Free</category>
+      </categories>
+      <tags>
+        <tag>CloudFlare</tag>
+        <tag>CDN</tag>
+        <tag>节点</tag>
+        <tag>科学上网</tag>
+        <tag>域名</tag>
       </tags>
   </entry>
   <entry>
