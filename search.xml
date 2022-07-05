@@ -1,36 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Nginx Proxy Manager搭建</title>
-    <url>/Nginx-Proxy-Manager/</url>
-    <content><![CDATA[<p>Nginx Proxy Manager是个个由外国人开发的nginx面板，少了宝塔的功能，对于像我这样只需要用到nginx反代的人，但又不会手动编辑文件十分友好</p>
-<h1 id="搭建"><a href="#搭建" class="headerlink" title="搭建"></a>搭建</h1><p>1.更新环境<br>ubuntu和debian</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">apt update -y</span><br></pre></td></tr></table></figure>
-<p>2.安装docker<br>ubuntu和debian</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt install docker.io -y &amp;&amp; sudo apt install docker-compose</span><br></pre></td></tr></table></figure>
-<p>用以下命令来检测docker和docker-compose的版本,确保安装成功</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker --version</span><br><span class="line">docker-compose --version</span><br></pre></td></tr></table></figure>
-<p>3.开机自启docker</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl enable docker</span><br></pre></td></tr></table></figure>
-<p>4.创建并编辑文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /home/ &amp;&amp; mkdir npm &amp;&amp; cd npm &amp;&amp; nano docker-compose.yml</span><br></pre></td></tr></table></figure>
-<p>然后输入以下代码</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">version: &#x27;3&#x27;</span><br><span class="line">services:</span><br><span class="line">  app:</span><br><span class="line">    image: &#x27;jc21/nginx-proxy-manager:latest&#x27;</span><br><span class="line">    restart: unless-stopped</span><br><span class="line">    ports:</span><br><span class="line">      - &#x27;80:80&#x27;</span><br><span class="line">      - &#x27;81:81&#x27;</span><br><span class="line">      - &#x27;443:443&#x27;</span><br><span class="line">    volumes:</span><br><span class="line">      - ./data:/data</span><br><span class="line">      - ./letsencrypt:/etc/letsencrypt</span><br></pre></td></tr></table></figure>
-<p>切记 <code>ctrl+x</code> 然后输入 <code>y</code> 退出<br>5.安装</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
-<p>然后 ip:port 访问面板默认为81<br>初始mail &amp; passwrd<br>Email:    <a href="mailto:&#97;&#x64;&#x6d;&#x69;&#110;&#x40;&#x65;&#120;&#97;&#109;&#x70;&#x6c;&#101;&#x2e;&#x63;&#x6f;&#x6d;">&#97;&#x64;&#x6d;&#x69;&#110;&#x40;&#x65;&#120;&#97;&#109;&#x70;&#x6c;&#101;&#x2e;&#x63;&#x6f;&#x6d;</a><br>Password: changeme</p>
-<p>参考： github项目<a href="https://github.com/NginxProxyManager/nginx-proxy-manager">https://github.com/NginxProxyManager/nginx-proxy-manager</a></p>
-]]></content>
-      <categories>
-        <category>建站</category>
-      </categories>
-      <tags>
-        <tag>nginx</tag>
-        <tag>面板</tag>
-        <tag>vps</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>使用IBM免费服务器搭建宝塔面板</title>
     <url>/IBMbt/</url>
     <content><![CDATA[<p>搭建准备：一台PC,一个可用的IBM LINUX ONE VPS。</p>
@@ -72,6 +42,36 @@
       </tags>
   </entry>
   <entry>
+    <title>Nginx Proxy Manager搭建</title>
+    <url>/Nginx-Proxy-Manager/</url>
+    <content><![CDATA[<p>Nginx Proxy Manager是个个由外国人开发的nginx面板，少了宝塔的功能，对于像我这样只需要用到nginx反代的人，但又不会手动编辑文件十分友好</p>
+<h1 id="搭建"><a href="#搭建" class="headerlink" title="搭建"></a>搭建</h1><p>1.更新环境<br>ubuntu和debian</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">apt update -y</span><br></pre></td></tr></table></figure>
+<p>2.安装docker<br>ubuntu和debian</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt install docker.io -y &amp;&amp; sudo apt install docker-compose</span><br></pre></td></tr></table></figure>
+<p>用以下命令来检测docker和docker-compose的版本,确保安装成功</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker --version</span><br><span class="line">docker-compose --version</span><br></pre></td></tr></table></figure>
+<p>3.开机自启docker</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl enable docker</span><br></pre></td></tr></table></figure>
+<p>4.创建并编辑文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /home/ &amp;&amp; mkdir npm &amp;&amp; cd npm &amp;&amp; nano docker-compose.yml</span><br></pre></td></tr></table></figure>
+<p>然后输入以下代码</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">version: &#x27;3&#x27;</span><br><span class="line">services:</span><br><span class="line">  app:</span><br><span class="line">    image: &#x27;jc21/nginx-proxy-manager:latest&#x27;</span><br><span class="line">    restart: unless-stopped</span><br><span class="line">    ports:</span><br><span class="line">      - &#x27;80:80&#x27;</span><br><span class="line">      - &#x27;81:81&#x27;</span><br><span class="line">      - &#x27;443:443&#x27;</span><br><span class="line">    volumes:</span><br><span class="line">      - ./data:/data</span><br><span class="line">      - ./letsencrypt:/etc/letsencrypt</span><br></pre></td></tr></table></figure>
+<p>切记 <code>ctrl+x</code> 然后输入 <code>y</code> 退出<br>5.安装</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
+<p>然后 ip:port 访问面板默认为81<br>初始mail &amp; passwrd<br>Email:    <a href="mailto:&#97;&#x64;&#x6d;&#105;&#x6e;&#64;&#101;&#x78;&#97;&#109;&#112;&#108;&#101;&#x2e;&#99;&#x6f;&#x6d;">&#97;&#x64;&#x6d;&#105;&#x6e;&#64;&#101;&#x78;&#97;&#109;&#112;&#108;&#101;&#x2e;&#99;&#x6f;&#x6d;</a><br>Password: changeme</p>
+<p>参考： github项目<a href="https://github.com/NginxProxyManager/nginx-proxy-manager">https://github.com/NginxProxyManager/nginx-proxy-manager</a></p>
+]]></content>
+      <categories>
+        <category>建站</category>
+      </categories>
+      <tags>
+        <tag>nginx</tag>
+        <tag>面板</tag>
+        <tag>vps</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>搭建开源的 Telegram 人形自走机器人 PagerMaid （支持新旧双版本共存）</title>
     <url>/Pagermaid-Pyro/</url>
     <content><![CDATA[<h1 id="Pagermaid-Pyro-简介"><a href="#Pagermaid-Pyro-简介" class="headerlink" title="Pagermaid-Pyro 简介"></a>Pagermaid-Pyro 简介</h1><p>PagerMaid-Pyro 是一个开源的 Telegram 人形自走 Bot 方案，基于 Python 开发，使用 Pyrogram 依赖，功能强大而丰富，它通过响应账号通过其他客户端发出的命令来自动执行一系列任务，可以帮助你打造专属的便利功能</p>
@@ -105,6 +105,7 @@
 <p>停止应用程序：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl stop pagermaid_pyro</span><br></pre></td></tr></table></figure>
 <h2 id="插件安装"><a href="#插件安装" class="headerlink" title="插件安装"></a>插件安装</h2><p>在任意聊天中发送 ,apt install &lt;插件名&gt; 即可安装。</p>
+<p>python升级参考文档：<br><a href="https://juejin.cn/post/7103717513376038926">https://juejin.cn/post/7103717513376038926</a><br>原文链接：<br><a href="https://owo.cab/32/">https://owo.cab/32/</a></p>
 ]]></content>
       <categories>
         <category>杂</category>
