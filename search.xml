@@ -59,7 +59,7 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">version: &#x27;3&#x27;</span><br><span class="line">services:</span><br><span class="line">  app:</span><br><span class="line">    image: &#x27;jc21/nginx-proxy-manager:latest&#x27;</span><br><span class="line">    restart: unless-stopped</span><br><span class="line">    ports:</span><br><span class="line">      - &#x27;80:80&#x27;</span><br><span class="line">      - &#x27;81:81&#x27;</span><br><span class="line">      - &#x27;443:443&#x27;</span><br><span class="line">    volumes:</span><br><span class="line">      - ./data:/data</span><br><span class="line">      - ./letsencrypt:/etc/letsencrypt</span><br></pre></td></tr></table></figure>
 <p>切记 <code>ctrl+x</code> 然后输入 <code>y</code> 退出<br>5.安装</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
-<p>然后 ip:port 访问面板默认为81<br>初始mail &amp; passwrd<br>Email:    <a href="mailto:&#x61;&#x64;&#109;&#x69;&#x6e;&#x40;&#101;&#x78;&#x61;&#x6d;&#x70;&#108;&#x65;&#46;&#99;&#111;&#109;">&#x61;&#x64;&#109;&#x69;&#x6e;&#x40;&#101;&#x78;&#x61;&#x6d;&#x70;&#108;&#x65;&#46;&#99;&#111;&#109;</a><br>Password: changeme</p>
+<p>然后 ip:port 访问面板默认为81<br>初始mail &amp; passwrd<br>Email:    <a href="mailto:&#97;&#100;&#109;&#x69;&#x6e;&#x40;&#101;&#120;&#x61;&#109;&#112;&#108;&#x65;&#x2e;&#99;&#x6f;&#109;">&#97;&#100;&#109;&#x69;&#x6e;&#x40;&#101;&#120;&#x61;&#109;&#112;&#108;&#x65;&#x2e;&#99;&#x6f;&#109;</a><br>Password: changeme</p>
 <p>参考： github项目<a href="https://github.com/NginxProxyManager/nginx-proxy-manager">https://github.com/NginxProxyManager/nginx-proxy-manager</a></p>
 ]]></content>
       <categories>
@@ -609,39 +609,6 @@
       </tags>
   </entry>
   <entry>
-    <title>白嫖raksmart的10美金来买VPS</title>
-    <url>/raksmart/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上期我不是发了IBM Linuxone的搭建节点教程，我真不希望有人说什么IBM小气，不给注册，搭完节点就封号。其实我觉得吧，IBM给的机器有那么高的配置，为什么一定要死磕节点呢？宝塔不香吗？</p>
-<hr>
-<p>今天我就教大家薅raksmart的VPS（只要能买到VPS，怎么撸都不会封）</p>
-<h2 id="准备材料"><a href="#准备材料" class="headerlink" title="准备材料"></a>准备材料</h2><p>·一枚邮箱，一台能上网的智能手机或电脑，一个能注册账号的节点</p>
-<h2 id="注册账号"><a href="#注册账号" class="headerlink" title="注册账号"></a>注册账号</h2><p>先打开<a href="http://raksmart.com/">raksmart的官网</a>，点击右上角的“register”</p>
-<p><img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220127103817560.png" alt="image-20220127103817560"></p>
-<p>如果成功出来了注册的界面那就说明没问题，注册信息就推荐写美国的虚拟信息 <a href="http://haoweichi.com/">这是网站</a></p>
-<h3 id="特殊情况"><a href="#特殊情况" class="headerlink" title="特殊情况"></a>特殊情况</h3><p>没图，希望有人私聊我给我一张，就是点击注册页面后，他会提示IP重复注册，请联系客服之类的，那就说明你注册的IP之前注册过了，得换IP，知道他显示能够注册账号</p>
-<h3 id="发工单"><a href="#发工单" class="headerlink" title="发工单"></a>发工单</h3><p><img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220127104732010.png" alt="image-20220127104732010"></p>
-<p>注册进去后，点击图上所示的位置，然后两个都写：新用户申请十美元</p>
-<p><img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220127104801117.png" alt="image-20220127104801117"></p>
-<p>然后点击“submit”提交，最后点“continue”就发工单了，然后就是等他审核完成，审核完成后，会在你邮箱里发送一封邮件<img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220127105009495.png" alt="image-20220127105009495"></p>
-<p>长这个样子，如果失败了，也是IP的问题，所以懂了吧，注册这家厂商的账号并申请到十美元就是看IP</p>
-<h2 id="买VPS"><a href="#买VPS" class="headerlink" title="买VPS"></a>买VPS</h2><p><img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220127105227402.png" alt="image-20220127105227402"></p>
-<p>按照图上来，切记，除了美国以外的国家都不要买，速度拉胯，只有5M，地区可以随便选，网络就选大陆优化然后点击“continue”</p>
-<p><img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220127105438092.png" alt="image-20220127105438092"></p>
-<p>输入优惠码：VPS-TP-30%dis ，再点击傍边橙色的按钮，就能减少30%的费用，这样你就能薅两台VPS了，在点击checkout</p>
-<p>上面的小框框，然后就点击checkout，使用余额，等待他买完，这样你就拥有了一台VPS</p>
-<h2 id="查看VPS"><a href="#查看VPS" class="headerlink" title="查看VPS"></a>查看VPS</h2><p>你可以把页面弄成中文<img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220127105811918.png" alt="image-20220127105811918">门户首页/用户中心/我的产品与服务  依次点击，这样你就能看到你的VPS了，点击VPS，你就能看到你VPS的全部信息了</p>
-]]></content>
-      <categories>
-        <category>VPS</category>
-      </categories>
-      <tags>
-        <tag>节点</tag>
-        <tag>科学上网</tag>
-        <tag>VPS</tag>
-        <tag>raksmart</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>一个很好的机场测速工具--ssrspeedn</title>
     <url>/ssrspeedn/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>ssrspeedn是一个机场测速工具，它可以测试节点是否解锁流媒体，还有是某中转。比stairspeedtest-reborn更好用，就是不支持单节点测速</p>
@@ -674,6 +641,39 @@
         <tag>测速</tag>
         <tag>ssrspeedn</tag>
         <tag>机场</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>白嫖raksmart的10美金来买VPS</title>
+    <url>/raksmart/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上期我不是发了IBM Linuxone的搭建节点教程，我真不希望有人说什么IBM小气，不给注册，搭完节点就封号。其实我觉得吧，IBM给的机器有那么高的配置，为什么一定要死磕节点呢？宝塔不香吗？</p>
+<hr>
+<p>今天我就教大家薅raksmart的VPS（只要能买到VPS，怎么撸都不会封）</p>
+<h2 id="准备材料"><a href="#准备材料" class="headerlink" title="准备材料"></a>准备材料</h2><p>·一枚邮箱，一台能上网的智能手机或电脑，一个能注册账号的节点</p>
+<h2 id="注册账号"><a href="#注册账号" class="headerlink" title="注册账号"></a>注册账号</h2><p>先打开<a href="http://raksmart.com/">raksmart的官网</a>，点击右上角的“register”</p>
+<p><img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220127103817560.png" alt="image-20220127103817560"></p>
+<p>如果成功出来了注册的界面那就说明没问题，注册信息就推荐写美国的虚拟信息 <a href="http://haoweichi.com/">这是网站</a></p>
+<h3 id="特殊情况"><a href="#特殊情况" class="headerlink" title="特殊情况"></a>特殊情况</h3><p>没图，希望有人私聊我给我一张，就是点击注册页面后，他会提示IP重复注册，请联系客服之类的，那就说明你注册的IP之前注册过了，得换IP，知道他显示能够注册账号</p>
+<h3 id="发工单"><a href="#发工单" class="headerlink" title="发工单"></a>发工单</h3><p><img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220127104732010.png" alt="image-20220127104732010"></p>
+<p>注册进去后，点击图上所示的位置，然后两个都写：新用户申请十美元</p>
+<p><img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220127104801117.png" alt="image-20220127104801117"></p>
+<p>然后点击“submit”提交，最后点“continue”就发工单了，然后就是等他审核完成，审核完成后，会在你邮箱里发送一封邮件<img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220127105009495.png" alt="image-20220127105009495"></p>
+<p>长这个样子，如果失败了，也是IP的问题，所以懂了吧，注册这家厂商的账号并申请到十美元就是看IP</p>
+<h2 id="买VPS"><a href="#买VPS" class="headerlink" title="买VPS"></a>买VPS</h2><p><img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220127105227402.png" alt="image-20220127105227402"></p>
+<p>按照图上来，切记，除了美国以外的国家都不要买，速度拉胯，只有5M，地区可以随便选，网络就选大陆优化然后点击“continue”</p>
+<p><img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220127105438092.png" alt="image-20220127105438092"></p>
+<p>输入优惠码：VPS-TP-30%dis ，再点击傍边橙色的按钮，就能减少30%的费用，这样你就能薅两台VPS了，在点击checkout</p>
+<p>上面的小框框，然后就点击checkout，使用余额，等待他买完，这样你就拥有了一台VPS</p>
+<h2 id="查看VPS"><a href="#查看VPS" class="headerlink" title="查看VPS"></a>查看VPS</h2><p>你可以把页面弄成中文<img src="https://gcore.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220127105811918.png" alt="image-20220127105811918">门户首页/用户中心/我的产品与服务  依次点击，这样你就能看到你的VPS了，点击VPS，你就能看到你VPS的全部信息了</p>
+]]></content>
+      <categories>
+        <category>VPS</category>
+      </categories>
+      <tags>
+        <tag>节点</tag>
+        <tag>科学上网</tag>
+        <tag>VPS</tag>
+        <tag>raksmart</tag>
       </tags>
   </entry>
   <entry>
