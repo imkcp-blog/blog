@@ -716,7 +716,7 @@
 <p><img src="https://gcore.jsdelivr.net/gh/imkcp-blog/photos@main/cfworkers/20220716132607.png"></p>
 <p>如果是这样就代表成功了</p>
 <p><img src="https://gcore.jsdelivr.net/gh/imkcp-blog/photos@main/cfworkers/20220716132836.png"></p>
-<h2 id="后端-1"><a href="#后端-1" class="headerlink" title="后端"></a>后端</h2><p>前端使用免费的静态网页服务厂商来搭建.我这里推荐vercel，当然，你也可以使用cf pages</p>
+<h2 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h2><p>前端使用免费的静态网页服务厂商来搭建.我这里推荐vercel，当然，你也可以使用cf pages</p>
 <p>1.fork<a href="https://github.com/CareyWang/sub-web">这个github项目</a></p>
 <p>2.修改默认后端地址，编辑src/views/Subconverter.vue 文件</p>
 <p>在第258行backendOptions，修改后面<code>http://127.0.0.1:25500/sub?</code>为刚才heroku和koyeb返回的地址</p>
