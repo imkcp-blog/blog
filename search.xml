@@ -723,6 +723,9 @@
 <p>注意：后面的<code>/sub?</code>不能删去，heroku地址一般为： <code>应用程序名1.herokuapp.com</code></p>
 <p>koyeb则为这里显示的地址</p>
 <p><img src="https://gcore.jsdelivr.net/gh/imkcp-blog/photos@main/cfworkers/20220716133647.png"></p>
+<p>此外，还能自定义多个后端地址格式如下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">backendOptions: [</span><br><span class="line">  &#123; value: &quot;https://subsc.ednovas.xyz/sub?&quot; &#125;,</span><br><span class="line">  &#123; value: &quot;http://api.tsutsu.cc:520/sub?&quot; &#125;,</span><br><span class="line">  &#123; value: &quot;https://api2.tsutsu.cc/sub?&quot; &#125;,</span><br><span class="line">  &#123; value: &quot;https://api.v1.mk/sub?&quot; &#125;,</span><br><span class="line">  &#123; value: &quot;https://subcon.dlj.tf/sub?&quot; &#125;,</span><br><span class="line">  &#123; value: &quot;https://api.dler.io/sub?&quot; &#125;,</span><br><span class="line">  &#123; value: &quot;https://api.wcc.best/sub?&quot; &#125;,</span><br><span class="line">  &#123; value: &quot;https://api.hope140.live/sub?&quot; &#125;,</span><br><span class="line">  &#123; value: &quot;https://sub.proxypoolv2.tk/sub?&quot; &#125;,</span><br><span class="line">  &#123; value: &quot;https://sub.id9.cc/sub?&quot; &#125;,</span><br><span class="line">],</span><br></pre></td></tr></table></figure>
+
 <p>3.由于heroku免费账号一个月只有550h的使用时间，所以我们需要多账号，请参考这篇文章<a href="https://blog.imkcp.xyz/cf-workers/">https://blog.imkcp.xyz/cf-workers/</a></p>
 <p>同样是替换为cf pagers的网址或者自定义的workers地址</p>
 <p>最后就是部署到中意的静态网页服务商了</p>
