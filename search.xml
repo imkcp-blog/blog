@@ -677,9 +677,9 @@
       </tags>
   </entry>
   <entry>
-    <title></title>
+    <title>搭建订阅转换</title>
     <url>/subconverter/</url>
-    <content><![CDATA[<p> 本文介绍搭建一个在线订阅地址转换网站.</p>
+    <content><![CDATA[<p>本文介绍搭建一个在线订阅地址转换网站.</p>
 <h1 id="开始搭建"><a href="#开始搭建" class="headerlink" title="开始搭建"></a>开始搭建</h1><h2 id="后端"><a href="#后端" class="headerlink" title="后端"></a>后端</h2><h3 id="heroku"><a href="#heroku" class="headerlink" title="heroku"></a>heroku</h3><p>打开<a href="https://github.com/BlueHtml/subconverter-heroku">github项目地址</a>，点个star，并fork此项目<br>打开<a href="https://dashboard.heroku.com/apps">heroku的官网</a>登陆后我们需要获取heroku账号的api_key,按图点击<br><img src="https://gcore.jsdelivr.net/gh/imkcp-blog/photos@main/cfworkers/20220716122750.png"><br>往下翻，如图，复制2框内所示的内容<br><img src="https://gcore.jsdelivr.net/gh/imkcp-blog/photos@main/cfworkers/20220716123007.png"><br>回到我们刚才fork的github项目，如图添加两个名为<code>HEROKU_API_KEY</code><br>和<code>HEROKU_EMAIL</code>的Secret。说明如下:</p>
 <table>
 <thead>
@@ -727,6 +727,14 @@
 <p>同样是替换为cf pagers的网址或者自定义的workers地址</p>
 <p>最后就是部署到中意的静态网页服务商了</p>
 ]]></content>
+      <categories>
+        <category>节点</category>
+      </categories>
+      <tags>
+        <tag>免费容器</tag>
+        <tag>heroku</tag>
+        <tag>koyeb</tag>
+      </tags>
   </entry>
   <entry>
     <title>使用github+picgo+jsdelivr搭建免费图床</title>
