@@ -1,36 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Nginx Proxy Manager搭建</title>
-    <url>/Nginx-Proxy-Manager/</url>
-    <content><![CDATA[<p>Nginx Proxy Manager是个个由外国人开发的nginx面板，少了宝塔的功能，对于像我这样只需要用到nginx反代的人，但又不会手动编辑文件十分友好</p>
-<h1 id="搭建"><a href="#搭建" class="headerlink" title="搭建"></a>搭建</h1><p>1.更新环境<br>ubuntu和debian</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">apt update -y &amp;&amp; apt upgrade</span><br></pre></td></tr></table></figure>
-<p>2.安装docker<br>ubuntu和debian</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt install docker.io -y &amp;&amp; sudo apt install docker-compose</span><br></pre></td></tr></table></figure>
-<p>用以下命令来检测docker和docker-compose的版本,确保安装成功</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker --version</span><br><span class="line">docker-compose --version</span><br></pre></td></tr></table></figure>
-<p>3.开机自启docker</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl enable docker</span><br></pre></td></tr></table></figure>
-<p>4.创建并编辑文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /home/ &amp;&amp; mkdir npm &amp;&amp; cd npm &amp;&amp; nano docker-compose.yml</span><br></pre></td></tr></table></figure>
-<p>然后输入以下代码</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">version: &#x27;3&#x27;</span><br><span class="line">services:</span><br><span class="line">  app:</span><br><span class="line">    image: &#x27;jc21/nginx-proxy-manager:latest&#x27;</span><br><span class="line">    restart: unless-stopped</span><br><span class="line">    ports:</span><br><span class="line">      - &#x27;80:80&#x27;</span><br><span class="line">      - &#x27;81:81&#x27;</span><br><span class="line">      - &#x27;443:443&#x27;</span><br><span class="line">    volumes:</span><br><span class="line">      - ./data:/data</span><br><span class="line">      - ./letsencrypt:/etc/letsencrypt</span><br></pre></td></tr></table></figure>
-<p>切记 <code>ctrl+x</code> 然后输入 <code>y</code> 退出<br>5.安装</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
-<p>然后 ip:port 访问面板默认为81<br>初始mail &amp; passwrd<br>Email:    <a href="mailto:&#x61;&#100;&#x6d;&#105;&#110;&#x40;&#x65;&#x78;&#97;&#109;&#x70;&#108;&#101;&#x2e;&#x63;&#111;&#109;">&#x61;&#100;&#x6d;&#105;&#110;&#x40;&#x65;&#x78;&#97;&#109;&#x70;&#108;&#101;&#x2e;&#x63;&#111;&#109;</a><br>Password: changeme</p>
-<p>参考： github项目<a href="https://github.com/NginxProxyManager/nginx-proxy-manager">https://github.com/NginxProxyManager/nginx-proxy-manager</a></p>
-]]></content>
-      <categories>
-        <category>建站</category>
-      </categories>
-      <tags>
-        <tag>nginx</tag>
-        <tag>面板</tag>
-        <tag>vps</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>使用IBM免费服务器搭建宝塔面板</title>
     <url>/IBMbt/</url>
     <content><![CDATA[<p>搭建准备：一台PC,一个可用的IBM LINUX ONE VPS。</p>
@@ -69,6 +39,36 @@
       <tags>
         <tag>IBM</tag>
         <tag>宝塔</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Nginx Proxy Manager搭建</title>
+    <url>/Nginx-Proxy-Manager/</url>
+    <content><![CDATA[<p>Nginx Proxy Manager是个个由外国人开发的nginx面板，少了宝塔的功能，对于像我这样只需要用到nginx反代的人，但又不会手动编辑文件十分友好</p>
+<h1 id="搭建"><a href="#搭建" class="headerlink" title="搭建"></a>搭建</h1><p>1.更新环境<br>ubuntu和debian</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">apt update -y &amp;&amp; apt upgrade</span><br></pre></td></tr></table></figure>
+<p>2.安装docker<br>ubuntu和debian</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt install docker.io -y &amp;&amp; sudo apt install docker-compose</span><br></pre></td></tr></table></figure>
+<p>用以下命令来检测docker和docker-compose的版本,确保安装成功</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker --version</span><br><span class="line">docker-compose --version</span><br></pre></td></tr></table></figure>
+<p>3.开机自启docker</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl enable docker</span><br></pre></td></tr></table></figure>
+<p>4.创建并编辑文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /home/ &amp;&amp; mkdir npm &amp;&amp; cd npm &amp;&amp; nano docker-compose.yml</span><br></pre></td></tr></table></figure>
+<p>然后输入以下代码</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">version: &#x27;3&#x27;</span><br><span class="line">services:</span><br><span class="line">  app:</span><br><span class="line">    image: &#x27;jc21/nginx-proxy-manager:latest&#x27;</span><br><span class="line">    restart: unless-stopped</span><br><span class="line">    ports:</span><br><span class="line">      - &#x27;80:80&#x27;</span><br><span class="line">      - &#x27;81:81&#x27;</span><br><span class="line">      - &#x27;443:443&#x27;</span><br><span class="line">    volumes:</span><br><span class="line">      - ./data:/data</span><br><span class="line">      - ./letsencrypt:/etc/letsencrypt</span><br></pre></td></tr></table></figure>
+<p>切记 <code>ctrl+x</code> 然后输入 <code>y</code> 退出<br>5.安装</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
+<p>然后 ip:port 访问面板默认为81<br>初始mail &amp; passwrd<br>Email:    <a href="mailto:&#97;&#x64;&#109;&#x69;&#x6e;&#64;&#101;&#120;&#x61;&#109;&#112;&#x6c;&#x65;&#46;&#99;&#111;&#x6d;">&#97;&#x64;&#109;&#x69;&#x6e;&#64;&#101;&#120;&#x61;&#109;&#112;&#x6c;&#x65;&#46;&#99;&#111;&#x6d;</a><br>Password: changeme</p>
+<p>参考： github项目<a href="https://github.com/NginxProxyManager/nginx-proxy-manager">https://github.com/NginxProxyManager/nginx-proxy-manager</a></p>
+]]></content>
+      <categories>
+        <category>建站</category>
+      </categories>
+      <tags>
+        <tag>nginx</tag>
+        <tag>面板</tag>
+        <tag>vps</tag>
       </tags>
   </entry>
   <entry>
@@ -195,6 +195,26 @@
       </tags>
   </entry>
   <entry>
+    <title>白嫖Azure的远程桌面</title>
+    <url>/azdesktop/</url>
+    <content><![CDATA[<p>本教程使用 Azure Cloud Shell 在 Microsoft Learn 沙盒上创建虚拟机。<br>😎完全免费的四小时 RDP。</p>
+<h1 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h1><p>1.打开<a href="https://docs.microsoft.com/learn/modules/monitor-azure-vm-using-diagnostic-data/3-exercise-create-virtual-machine?activate-azure-sandbox=true">这个网址</a><br>点击登录以激活沙盒<br><img src="https://gcore.jsdelivr.net/gh/imkcp-blog/photos@main/blog120220604181807.png"><br>登录自己的账号，点击激活沙盒，通过人机验证<br><img src="https://gcore.jsdelivr.net/gh/imkcp-blog/photos@main/blog120220604182138.png"><br>点击检查权限，再点击接受<br><img src="https://gcore.jsdelivr.net/gh/imkcp-blog/photos@main/blog120220604182230.png"><br>等待一段时间后，成功后如图所示<br><img src="https://gcore.jsdelivr.net/gh/imkcp-blog/photos@main/blog120220604182434.png"><br>PS:<img src="https://gcore.jsdelivr.net/gh/imkcp-blog/photos@main/blog120220604182510.png">如果再以上步骤中出现了此种情况，则根据自身情况验证手机<br>2.在右边的代码框里输入以下代码</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl -skLO bit.do/azurewinvmplus ; chmod +x azurewinvmplus ; ./azurewinvmplus</span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl -skLO bit.do/azurewin11vm ; chmod +x azurewin11vm ; ./azurewin11vm</span><br></pre></td></tr></table></figure>
+<p>两者的区别就在于第二个一键部署win11，第一个则有更多选择。例如：系统和地区<br>3.我以第一个代码为演示，选择vps的地区<br><img src="https://gcore.jsdelivr.net/gh/imkcp-blog/photos@main/blog120220604183034.png"><br>4.选择vps的操作系统<br><img src="https://gcore.jsdelivr.net/gh/imkcp-blog/photos@main/blog120220604183055.png"><br>5.选择vps的配置，然后等待他部署完成<br><img src="https://gcore.jsdelivr.net/gh/imkcp-blog/photos@main/blog120220604183147.png"><br>6.等到出现这个界面就代表可以食用了<br><img src="https://gcore.jsdelivr.net/gh/imkcp-blog/photos@main/blog120220604183449.png"><br>7.然后使用win系统自带的远程软件连接就行,点击任务栏上的搜索，搜索远程就有</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://github.com/kmille36/Windows-11-VPS">https://github.com/kmille36/Windows-11-VPS</a><br><a href="https://youtu.be/bwY8dt0YKgU">https://youtu.be/bwY8dt0YKgU</a></p>
+]]></content>
+      <categories>
+        <category>Free</category>
+      </categories>
+      <tags>
+        <tag>free</tag>
+        <tag>azure</tag>
+        <tag>RDP</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用CloudFlareSpeedTest优选出适合自己的CF IP</title>
     <url>/cf-ip/</url>
     <content><![CDATA[<h1 id="准备材料"><a href="#准备材料" class="headerlink" title="准备材料"></a>准备材料</h1><p>1.一台电脑或 vps</p>
@@ -215,26 +235,6 @@
         <tag>CDN</tag>
         <tag>节点</tag>
         <tag>科学上网</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>白嫖Azure的远程桌面</title>
-    <url>/azdesktop/</url>
-    <content><![CDATA[<p>本教程使用 Azure Cloud Shell 在 Microsoft Learn 沙盒上创建虚拟机。<br>😎完全免费的四小时 RDP。</p>
-<h1 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h1><p>1.打开<a href="https://docs.microsoft.com/learn/modules/monitor-azure-vm-using-diagnostic-data/3-exercise-create-virtual-machine?activate-azure-sandbox=true">这个网址</a><br>点击登录以激活沙盒<br><img src="https://gcore.jsdelivr.net/gh/imkcp-blog/photos@main/blog120220604181807.png"><br>登录自己的账号，点击激活沙盒，通过人机验证<br><img src="https://gcore.jsdelivr.net/gh/imkcp-blog/photos@main/blog120220604182138.png"><br>点击检查权限，再点击接受<br><img src="https://gcore.jsdelivr.net/gh/imkcp-blog/photos@main/blog120220604182230.png"><br>等待一段时间后，成功后如图所示<br><img src="https://gcore.jsdelivr.net/gh/imkcp-blog/photos@main/blog120220604182434.png"><br>PS:<img src="https://gcore.jsdelivr.net/gh/imkcp-blog/photos@main/blog120220604182510.png">如果再以上步骤中出现了此种情况，则根据自身情况验证手机<br>2.在右边的代码框里输入以下代码</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl -skLO bit.do/azurewinvmplus ; chmod +x azurewinvmplus ; ./azurewinvmplus</span><br></pre></td></tr></table></figure>
-<p>或者</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl -skLO bit.do/azurewin11vm ; chmod +x azurewin11vm ; ./azurewin11vm</span><br></pre></td></tr></table></figure>
-<p>两者的区别就在于第二个一键部署win11，第一个则有更多选择。例如：系统和地区<br>3.我以第一个代码为演示，选择vps的地区<br><img src="https://gcore.jsdelivr.net/gh/imkcp-blog/photos@main/blog120220604183034.png"><br>4.选择vps的操作系统<br><img src="https://gcore.jsdelivr.net/gh/imkcp-blog/photos@main/blog120220604183055.png"><br>5.选择vps的配置，然后等待他部署完成<br><img src="https://gcore.jsdelivr.net/gh/imkcp-blog/photos@main/blog120220604183147.png"><br>6.等到出现这个界面就代表可以食用了<br><img src="https://gcore.jsdelivr.net/gh/imkcp-blog/photos@main/blog120220604183449.png"><br>7.然后使用win系统自带的远程软件连接就行,点击任务栏上的搜索，搜索远程就有</p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://github.com/kmille36/Windows-11-VPS">https://github.com/kmille36/Windows-11-VPS</a><br><a href="https://youtu.be/bwY8dt0YKgU">https://youtu.be/bwY8dt0YKgU</a></p>
-]]></content>
-      <categories>
-        <category>Free</category>
-      </categories>
-      <tags>
-        <tag>free</tag>
-        <tag>azure</tag>
-        <tag>RDP</tag>
       </tags>
   </entry>
   <entry>
