@@ -126,27 +126,10 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install --upgrade git -y</span><br></pre></td></tr></table></figure>
 
 <p>安装完之后从仓库拉取项目</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /var/lib &amp;&amp; git clone https://gitlab.com/Xtao-Labs/pagermaid-modify.git pagermaid &amp;&amp; cd pagermaid</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /var/lib &amp;&amp; git clone https://github.com/TeamPGM/PagerMaid-Modify.git pagermaid &amp;&amp; cd pagermaid</span><br></pre></td></tr></table></figure>
 
 <p>拉取的项目在文件夹var/lib/pagermaid文件下（不在root文件夹下</p>
-<h2 id="安装软件包"><a href="#安装软件包" class="headerlink" title="安装软件包"></a>安装软件包</h2><h3 id="imagemagick"><a href="#imagemagick" class="headerlink" title="imagemagick"></a>imagemagick</h3><p>此软件包用于处理图片，如您没有图片处理需求，您可以无需安装此软件包。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install imagemagick -y</span><br></pre></td></tr></table></figure>
-
-<h3 id="neofetch"><a href="#neofetch" class="headerlink" title="neofetch"></a>neofetch</h3><p>此软件包用于显示系统信息，如您没有显示系统信息需求，您可以无需安装此软件包。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install neofetch -y</span><br></pre></td></tr></table></figure>
-
-<h3 id="zbar"><a href="#zbar" class="headerlink" title="zbar"></a>zbar</h3><p>此软件包用于处理二维码信息，如您没有处理二维码信息需求，您可以无需安装此软件包。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install libzbar-dev -y</span><br></pre></td></tr></table></figure>
-
-<h3 id="最大化安装"><a href="#最大化安装" class="headerlink" title="最大化安装"></a>最大化安装</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install tesseract-ocr tesseract-ocr-all -y</span><br></pre></td></tr></table></figure>
-
-<h3 id="最小化安装"><a href="#最小化安装" class="headerlink" title="最小化安装"></a>最小化安装</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install tesseract-ocr tesseract-ocr-eng tesseract-ocr-chi-sim -y</span><br></pre></td></tr></table></figure>
-
-<h3 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h3><p>此软件包用于记录信息，以方便软件重启后仍然可以进行上一次未完成的任务，你也可以无需安装此软件包。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install redis-server -y</span><br></pre></td></tr></table></figure>
-
-<h3 id="Pip"><a href="#Pip" class="headerlink" title="Pip"></a>Pip</h3><p>此软件包为必须依赖包，用于安装 python 依赖。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install python3-pip -y</span><br></pre></td></tr></table></figure>
+<h2 id="安装软件包"><a href="#安装软件包" class="headerlink" title="安装软件包"></a>安装软件包</h2><h3 id="梭哈"><a href="#梭哈" class="headerlink" title="梭哈"></a>梭哈</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">apt-get install imagemagick neofetch libwebp-dev libzbar-dev libzbar-dev libxml2-dev libxslt-dev tesseract-ocr tesseract-ocr-all redis-server python3-pip  -y</span><br></pre></td></tr></table></figure>
 
 <h2 id="安装依赖包"><a href="#安装依赖包" class="headerlink" title="安装依赖包"></a>安装依赖包</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pip3 install -r requirements.txt</span><br></pre></td></tr></table></figure>
 
@@ -183,7 +166,6 @@
 <p>帮助：<code>-help</code></p>
 <p>带-的全在TG里输入</p>
 <p>这是插件列表：<a href="https://index.xtaolabs.com/">https://index.xtaolabs.com/</a></p>
-<h2 id="好玩的网页"><a href="#好玩的网页" class="headerlink" title="好玩的网页"></a>好玩的网页</h2><p><a href="https://pnrtscr.com/">地址</a>开心或惊吓后不必感谢我</p>
 ]]></content>
       <categories>
         <category>VPS</category>
