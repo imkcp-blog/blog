@@ -119,8 +119,7 @@
   <entry>
     <title>Pagermaid--TG人形自走机器人</title>
     <url>/Pagermaid/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>1.hax续期脚本已更新博客也同步更新</p>
-<p>2.你是否在TG群里看见一些人形如机器人，能-s偷取你的贴纸还能-atll来@群里的全部程成员，这就是今天要介绍的内容，Pagermaid人形自走机器人</p>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>你是否在TG群里看见一些人形如机器人，能-s偷取你的贴纸还能-atll来@群里的全部程成员，这就是今天要介绍的内容，Pagermaid人形自走机器人</p>
 <h1 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h1><h2 id="准备材料"><a href="#准备材料" class="headerlink" title="准备材料"></a>准备材料</h2><p>·一台能上TG的VPS，系统最好是Ubuntu20.04，一台能上网的电脑，一个TG账号，还有ssh工具，我推荐FinalShell</p>
 <h2 id="拉取项目"><a href="#拉取项目" class="headerlink" title="拉取项目"></a>拉取项目</h2><p>Pagermaid项目托管在github，所以首先要检查VPS是否安装git软件包，且当git软件包版过低时，无法实现程序的自动更新，所以首先要安装/升级git软件包：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install --upgrade git -y</span><br></pre></td></tr></table></figure>
