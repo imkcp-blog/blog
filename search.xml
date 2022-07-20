@@ -733,6 +733,12 @@
 <p>开一个无痕窗口, 在上图给的链接后边加上 <code>sub?</code> 如果出现下图就是完成了</p>
 <p><img src="https://gcore.jsdelivr.net/gh/imkcp-blog/photos@main/cfworkers/20220718212223.png"></p>
 <p>到此, 用oketeto部署clash订阅转换后端 subconver就完成了</p>
+<h3 id="northflank"><a href="#northflank" class="headerlink" title="northflank"></a>northflank</h3><p>如图，图中地址为： <a href="https://github.com/jth445600/subconverter-heroku-koyeb-northflank">https://github.com/jth445600/subconverter-heroku-koyeb-northflank</a> ，记得选择http顺便打勾</p>
+<p><img src="https://gcore.jsdelivr.net/gh/imkcp-blog/photos@main/cfworkers/20220720135133.png"></p>
+<p>等待他部署完成，点击图中按钮复制地址</p>
+<p><img src="https://gcore.jsdelivr.net/gh/imkcp-blog/photos@main/cfworkers/20220720135501.png"></p>
+<p>新开个标签页，在复制的地址后加”/version“，如果返回的如图所示，就代表成功了</p>
+<p><img src="https://gcore.jsdelivr.net/gh/imkcp-blog/photos@main/cfworkers/20220720135606.png"></p>
 <h2 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h2><p>前端使用免费的静态网页服务厂商来搭建.我这里推荐vercel，当然，你也可以使用cf pages</p>
 <p>1.fork<a href="https://github.com/CareyWang/sub-web">这个github项目</a></p>
 <p>2.修改默认后端地址，编辑src/views/Subconverter.vue 文件</p>
@@ -740,6 +746,7 @@
 <p>注意：后面的<code>/sub?</code>不能删去，heroku地址一般为： <code>应用程序名1.herokuapp.com</code></p>
 <p>koyeb则为这里显示的地址，同理okteto也是显示的</p>
 <p><img src="https://gcore.jsdelivr.net/gh/imkcp-blog/photos@main/cfworkers/20220716133647.png"></p>
+<p>northflank则是复制的地址</p>
 <p>此外，还能自定义多个后端地址格式如下</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">backendOptions: [</span><br><span class="line">  &#123; value: &quot;https://subsc.ednovas.xyz/sub?&quot; &#125;,</span><br><span class="line">  &#123; value: &quot;http://api.tsutsu.cc:520/sub?&quot; &#125;,</span><br><span class="line">  &#123; value: &quot;https://api2.tsutsu.cc/sub?&quot; &#125;,</span><br><span class="line">  &#123; value: &quot;https://api.v1.mk/sub?&quot; &#125;,</span><br><span class="line">  &#123; value: &quot;https://subcon.dlj.tf/sub?&quot; &#125;,</span><br><span class="line">  &#123; value: &quot;https://api.dler.io/sub?&quot; &#125;,</span><br><span class="line">  &#123; value: &quot;https://api.wcc.best/sub?&quot; &#125;,</span><br><span class="line">  &#123; value: &quot;https://api.hope140.live/sub?&quot; &#125;,</span><br><span class="line">  &#123; value: &quot;https://sub.proxypoolv2.tk/sub?&quot; &#125;,</span><br><span class="line">  &#123; value: &quot;https://sub.id9.cc/sub?&quot; &#125;,</span><br><span class="line">],</span><br></pre></td></tr></table></figure>
 
