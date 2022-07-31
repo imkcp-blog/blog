@@ -826,7 +826,7 @@
 <p>获取 Pixiv Cookie请自行google<br>向bot发送一张图片并回复这张图片使用 /addphoto<br>PS: 因为bot第一次运行需要初始化数据库所以此步骤必须执行<br><img src="https://gcore.jsdelivr.net/gh/imkcp-blog/photos@main/cfworkers/20220731124523.png"><br>运行</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">node main.js</span><br></pre></td></tr></table></figure>
 
-
+<h1 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h1><p>本文转载自<a href="https://blog.greenfishpowered.cn/2022/07/30/%e6%90%ad%e5%bb%ba-katonei-%e6%b6%a9%e6%b6%a9-bot/">绿头的blog</a></p>
 ]]></content>
       <categories>
         <category>杂</category>
