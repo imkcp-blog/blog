@@ -801,4 +801,39 @@
         <tag>iplc</tag>
       </tags>
   </entry>
+  <entry>
+    <title>搭建KatoNei bot</title>
+    <url>/xxbot/</url>
+    <content><![CDATA[<p>本教程适合ubuntu和debian使用，centos请自行google</p>
+<h1 id="项目地址"><a href="#项目地址" class="headerlink" title="项目地址"></a>项目地址</h1><p><a href="https://github.com/ArsFy/katonei_bot">https://github.com/ArsFy/katonei_bot</a></p>
+<h1 id="安装依赖环境"><a href="#安装依赖环境" class="headerlink" title="安装依赖环境"></a>安装依赖环境</h1><p>首先，确保你的包是最新的。打开终端并输入</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt update &amp;&amp; sudo apt upgrade -y</span><br></pre></td></tr></table></figure>
+<h2 id="安装-ImageMagick"><a href="#安装-ImageMagick" class="headerlink" title="安装 ImageMagick"></a>安装 ImageMagick</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt install imagemagick -y</span><br></pre></td></tr></table></figure>
+<h2 id="安装-Nodejs-v14-x"><a href="#安装-Nodejs-v14-x" class="headerlink" title="安装 Nodejs v14.x"></a>安装 Nodejs v14.x</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Ubuntu</span><br><span class="line">curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash -</span><br><span class="line">sudo apt-get install -y nodejs</span><br><span class="line"></span><br><span class="line"># Debian</span><br><span class="line">curl -fsSL https://deb.nodesource.com/setup_14.x | bash -</span><br><span class="line">apt-get install -y nodejs</span><br></pre></td></tr></table></figure>
+<h2 id="安装-Mongo-DB"><a href="#安装-Mongo-DB" class="headerlink" title="安装 Mongo DB"></a>安装 Mongo DB</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt install mongodb -y</span><br></pre></td></tr></table></figure>
+<h2 id="进入mongo-shell"><a href="#进入mongo-shell" class="headerlink" title="进入mongo shell"></a>进入mongo shell</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mongo</span><br></pre></td></tr></table></figure>
+<h2 id="新建数据库和用户"><a href="#新建数据库和用户" class="headerlink" title="新建数据库和用户"></a>新建数据库和用户</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">use database0 #新建一个名为database0的数据库</span><br></pre></td></tr></table></figure>
+<p>因为不允许存在空数据库所以要插入一个数据</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">db.foo.insert(&#123;_id:1,name:&quot;test&quot;&#125;)</span><br></pre></td></tr></table></figure>
+<p>新建用户并授权 将 <username> 和 <password> 替换为自定义的用户和密码</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">db.createUser(&#123;</span><br><span class="line">    user:&#x27;&lt;username&gt;&#x27;,</span><br><span class="line">    pwd:&#x27;&lt;password&gt;&#x27;,</span><br><span class="line">    roles:[&#x27;readWrite&#x27;]</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+<h1 id="开始搭建-bot"><a href="#开始搭建-bot" class="headerlink" title="开始搭建 bot"></a>开始搭建 bot</h1><p>从仓库拉取项目</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt install git -y</span><br><span class="line">cd /var/lib &amp;&amp; git clone https://github.com/ArsFy/katonei_bot.git &amp;&amp; cd katonei_bot</span><br></pre></td></tr></table></figure>
+<p>修改配置文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cp config.example.json config.json</span><br><span class="line">vim config.json</span><br></pre></td></tr></table></figure>
+<p>将下方各值修改为自己的</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;db_server&quot;: &quot;127.0.0.1:27017&quot;, // MongoDB Server</span><br><span class="line">    &quot;db_name&quot;: &quot;&lt;database&gt;&quot;,          // 数据库名 </span><br><span class="line">    &quot;db_user&quot;: &quot;&lt;username&gt;&quot;,          // 用户名</span><br><span class="line">    &quot;db_pass&quot;: &quot;&lt;password&gt;&quot;,            // 密码</span><br><span class="line">    &quot;cookie&quot;: &quot;12345678_CNy4eVYNKZqRzMfjvgWpHVJz6WdP5p5Y&quot;, // Pixiv Cookie (开启 R18)</span><br><span class="line">    &quot;bot_token&quot;: &quot;123456:Abcdefghijklmn&quot;,   // Telegram Bot Token</span><br><span class="line">    &quot;bot&quot;: &quot;@xxxx_bot&quot;,                     // Telegram Name</span><br><span class="line">    &quot;admin&quot;: [0123456789]                             // Telegram Admin ID (Number)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>获取 Pixiv Cookie请自行google<br>向bot发送一张图片并回复这张图片使用 /addphoto<br>PS: 因为bot第一次运行需要初始化数据库所以此步骤必须执行<br><img src="https://gcore.jsdelivr.net/gh/imkcp-blog/photos@main/cfworkers/20220731124523.png"><br>运行</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">node main.js</span><br></pre></td></tr></table></figure>
+
+
+]]></content>
+      <categories>
+        <category>杂</category>
+      </categories>
+      <tags>
+        <tag>tg</tag>
+        <tag>bot</tag>
+      </tags>
+  </entry>
 </search>
